@@ -1,0 +1,3170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demanda Semestral de Materiais — CT/UFPB</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --azul-ufpb:#0b3d6b;
+  --azul-escuro:#062a4d;
+  --azul-medio:#1565a8;
+  --azul-claro:#e8f1f9;
+  --azul-accent:#1a7bc4;
+  --cinza-fundo:#f4f6f9;
+  --cinza-borda:#dde3ea;
+  --cinza-texto:#5a6577;
+  --branco:#ffffff;
+  --verde:#1e7d4a;
+  --verde-claro:#e3f5ea;
+  --vermelho:#c0392b;
+  --vermelho-claro:#fde8e6;
+  --amarelo-alerta:#fff8e1;
+  --amarelo-borda:#f0a500;
+  --sombra-xs:0 1px 2px rgba(11,61,107,.04);
+  --sombra-sm:0 2px 6px rgba(11,61,107,.05);
+  --sombra:0 6px 18px rgba(11,61,107,.07);
+  --sombra-md:0 12px 32px rgba(11,61,107,.09);
+  --sombra-lg:0 20px 48px rgba(11,61,107,.12);
+  --raio:12px;
+  --raio-sm:8px;
+  --raio-xs:6px;
+  --transicao:all .22s cubic-bezier(.4,0,.2,1);
+  --transicao-rapida:all .15s cubic-bezier(.4,0,.2,1);
+  --fonte: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--fonte);
+  background:var(--cinza-fundo);
+  color:#1a2332;
+  line-height:1.55;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"cv02","cv03","cv04","cv11";
+}
+
+/* ============================================================
+   ÍCONES SVG
+   ============================================================ */
+.ico-svg{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex-shrink:0;vertical-align:middle;
+  stroke:currentColor;fill:none;
+  stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;
+}
+.ico-svg.sm{width:16px;height:16px}
+.ico-svg.md{width:18px;height:18px}
+.ico-svg.lg{width:22px;height:22px}
+.ico-svg.xl{width:28px;height:28px}
+.ico-svg.xxl{width:38px;height:38px}
+.ico-svg.brand{stroke-width:2}
+
+/* ============================================================
+   LOGIN
+   ============================================================ */
+#login-screen{
+  position:fixed;inset:0;z-index:3000;
+  background:linear-gradient(150deg,#0b3d6b 0%,#062a4d 100%);
+  display:grid;place-items:center;padding:20px;
+}
+#login-screen::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 30%,rgba(26,123,196,.25) 0%,transparent 45%),
+             radial-gradient(circle at 85% 75%,rgba(26,123,196,.15) 0%,transparent 40%);
+  pointer-events:none;
+}
+.login-card{
+  position:relative;
+  background:#fff;border-radius:20px;padding:40px 36px;max-width:430px;width:100%;
+  box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.05);
+  animation:fadeUp .5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ===== LOGO OFICIAL — FUNDO ESCURO PARA A LOGO BRANCA ===== */
+.login-card .logo-container{
+  width:140px;height:140px;
+  display:grid;place-items:center;
+  margin:0 auto 22px;
+  background:linear-gradient(135deg,var(--azul-ufpb),var(--azul-escuro));
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 8px 24px rgba(11,61,107,.22);
+}
+.login-card .logo-login{
+  width:100%;height:100%;
+  display:block;
+  object-fit:contain;
+  background:transparent;
+}
+
+.login-card h1{
+  font-size:21px;color:var(--azul-escuro);text-align:center;margin-bottom:6px;
+  font-weight:700;letter-spacing:-.4px;line-height:1.3;
+}
+.login-card .sub{
+  font-size:13px;color:var(--cinza-texto);text-align:center;margin-bottom:30px;
+  font-weight:500;
+}
+.login-card .field{margin-bottom:18px}
+.login-card .field label{
+  display:block;font-size:12.5px;font-weight:600;color:var(--azul-escuro);
+  margin-bottom:7px;letter-spacing:.1px;
+}
+.login-card .field input{
+  width:100%;padding:13px 15px;border:1.5px solid var(--cinza-borda);border-radius:var(--raio-sm);
+  font-size:14px;font-family:inherit;transition:var(--transicao);background:#fafbfc;
+  color:#1a2332;
+}
+.login-card .field input:focus{
+  outline:none;border-color:var(--azul-medio);background:#fff;
+  box-shadow:0 0 0 4px rgba(21,101,168,.1);
+}
+.login-card .btn-login{
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--azul-ufpb),var(--azul-medio));
+  color:#fff;border:none;border-radius:var(--raio-sm);font-size:15px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:var(--transicao);margin-top:10px;
+  box-shadow:0 6px 16px rgba(11,61,107,.25);
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  letter-spacing:.1px;
+}
+.login-card .btn-login:hover{
+  transform:translateY(-1.5px);
+  box-shadow:0 10px 24px rgba(11,61,107,.35);
+}
+.login-card .btn-login:active{transform:translateY(0)}
+.login-card .erro-login{
+  background:var(--vermelho-claro);color:var(--vermelho);border-left:3px solid var(--vermelho);
+  padding:11px 15px;border-radius:var(--raio-xs);font-size:13px;margin-bottom:16px;display:none;
+  font-weight:500;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header.topbar{
+  background:linear-gradient(135deg,var(--azul-ufpb),var(--azul-escuro));
+  color:#fff;padding:14px 24px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 20px rgba(0,0,0,.15);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.topbar-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* ===== LOGO OFICIAL NO HEADER — FUNDO ESCURO PARA LOGO BRANCA ===== */
+.logo-badge{
+  width:54px;height:54px;border-radius:11px;
+  background:rgba(255,255,255,.06);
+  display:grid;place-items:center;overflow:hidden;flex-shrink:0;
+  border:1px solid rgba(255,255,255,.12);
+  padding:6px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+.logo-badge img{
+  width:100%;height:100%;object-fit:contain;
+  background:transparent;
+}
+
+.topbar h1{font-size:15px;font-weight:600;line-height:1.25;letter-spacing:-.25px}
+.topbar p{font-size:11.5px;opacity:.78;margin-top:2px;font-weight:400;letter-spacing:.1px}
+.topbar nav{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.topbar nav button{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  color:#fff;padding:9px 15px;border-radius:var(--raio-xs);cursor:pointer;
+  font-size:13px;font-weight:500;transition:var(--transicao);font-family:inherit;
+  display:inline-flex;align-items:center;gap:7px;letter-spacing:.1px;
+}
+.topbar nav button:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.28);transform:translateY(-1px)}
+.topbar nav button:active{transform:translateY(0)}
+.topbar nav button.active{background:#fff;color:var(--azul-ufpb);border-color:#fff;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.topbar .btn-logout{
+  background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.12)!important;
+  font-size:12px!important;padding:8px 13px!important;
+}
+.topbar .btn-logout:hover{background:rgba(220,80,80,.18)!important;border-color:rgba(255,255,255,.25)!important}
+
+main{max-width:1240px;margin:0 auto;padding:28px 18px 90px}
+.view{display:none;animation:fadeUp .35s cubic-bezier(.4,0,.2,1)}
+.view.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============================================================
+   STEPPER
+   ============================================================ */
+.stepper{display:flex;gap:8px;margin-bottom:26px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+.stepper::-webkit-scrollbar{height:5px}
+.stepper::-webkit-scrollbar-thumb{background:var(--cinza-borda);border-radius:10px}
+.step{
+  flex:1;min-width:124px;background:#fff;border:1.5px solid var(--cinza-borda);
+  border-radius:var(--raio);padding:11px 15px;font-size:12px;color:var(--cinza-texto);
+  display:flex;align-items:center;gap:10px;transition:var(--transicao);
+  box-shadow:var(--sombra-xs);font-weight:500;
+}
+.step .num{
+  width:27px;height:27px;border-radius:50%;background:var(--cinza-fundo);
+  color:var(--cinza-texto);display:grid;place-items:center;font-weight:700;
+  font-size:12px;flex-shrink:0;transition:var(--transicao);
+  border:1.5px solid transparent;
+}
+.step.active{
+  border-color:var(--azul-medio);background:var(--azul-claro);
+  box-shadow:0 4px 14px rgba(21,101,168,.14);color:var(--azul-ufpb);font-weight:600;
+}
+.step.active .num{background:var(--azul-ufpb);color:#fff;border-color:var(--azul-ufpb)}
+.step.done .num{background:var(--verde);color:#fff;border-color:var(--verde)}
+.step.done{border-color:var(--verde-claro);color:var(--verde)}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card{
+  background:#fff;border:1px solid var(--cinza-borda);border-radius:var(--raio);
+  padding:28px;margin-bottom:20px;box-shadow:var(--sombra-sm);
+  transition:var(--transicao);
+}
+.card:hover{box-shadow:var(--sombra)}
+.card h2{
+  font-size:17.5px;color:var(--azul-escuro);margin-bottom:6px;
+  display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.3px;
+}
+.card h2 .ico-svg{color:var(--azul-medio)}
+.card .sub{font-size:13px;color:var(--cinza-texto);margin-bottom:20px;line-height:1.5}
+
+.banner-semestre{
+  background:linear-gradient(135deg,#fff9e6,#fff3c4);
+  border-left:4px solid var(--amarelo-borda);border-radius:var(--raio);
+  padding:18px 22px;margin-bottom:24px;box-shadow:var(--sombra-xs);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.banner-semestre .ico-svg{color:#7a5200;flex-shrink:0;margin-top:2px}
+.banner-semestre h3{color:#7a5200;font-size:14px;margin-bottom:5px;font-weight:700;letter-spacing:.1px}
+.banner-semestre p{color:#8a6500;font-size:13px;line-height:1.55}
+
+/* ============================================================
+   FORMULÁRIO
+   ============================================================ */
+.grid{display:grid;gap:18px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.field label{
+  display:block;font-size:13px;font-weight:600;color:var(--azul-escuro);
+  margin-bottom:7px;letter-spacing:.1px;
+}
+.field label .req{color:var(--vermelho);margin-left:1px}
+.field input,.field select,.field textarea{
+  width:100%;padding:12px 15px;border:1.5px solid var(--cinza-borda);
+  border-radius:var(--raio-sm);font-size:14px;font-family:inherit;background:#fafbfc;
+  transition:var(--transicao);color:#1a2332;
+}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#c5cdd6}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--azul-medio);background:#fff;
+  box-shadow:0 0 0 4px rgba(21,101,168,.1);
+}
+.field input:disabled,.field select:disabled{background:#f4f6f9;color:#9aa5b1;cursor:not-allowed}
+.field textarea{resize:vertical;min-height:88px;line-height:1.5}
+.field .hint{font-size:11.5px;color:#9aa5b1;margin-top:6px;line-height:1.45;display:flex;gap:5px;align-items:flex-start}
+.field.error input,.field.error select{border-color:var(--vermelho);background:#fef2f2}
+#inp-setor-manual{background:#fffdf5;border-color:#f0c674}
+#inp-setor-manual:focus{border-color:#e08e00;box-shadow:0 0 0 4px rgba(240,165,0,.14)}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn{
+  padding:12px 22px;border-radius:var(--raio-sm);border:none;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:var(--transicao);
+  display:inline-flex;align-items:center;gap:8px;letter-spacing:.1px;
+  white-space:nowrap;justify-content:center;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--azul-ufpb),var(--azul-medio));color:#fff;
+  box-shadow:0 3px 10px rgba(11,61,107,.22);
+}
+.btn-primary:hover:not(:disabled){transform:translateY(-1.5px);box-shadow:0 6px 18px rgba(11,61,107,.32)}
+.btn-success{
+  background:linear-gradient(135deg,var(--verde),#166139);color:#fff;
+  box-shadow:0 3px 10px rgba(30,125,74,.22);
+}
+.btn-success:hover:not(:disabled){transform:translateY(-1.5px);box-shadow:0 6px 18px rgba(30,125,74,.32)}
+.btn-outline{background:#fff;border:1.5px solid var(--cinza-borda);color:var(--azul-escuro)}
+.btn-outline:hover{background:var(--azul-claro);border-color:var(--azul-medio);transform:translateY(-1px)}
+.btn-danger{background:#fff;border:1.5px solid #f0c4c0;color:var(--vermelho)}
+.btn-danger:hover{background:var(--vermelho-claro);transform:translateY(-1px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.btn:active:not(:disabled){transform:translateY(0)!important}
+.btn-sm{padding:8px 14px;font-size:12.5px;border-radius:var(--raio-xs);gap:6px}
+.btn-ghost{background:transparent;border:none;color:var(--azul-medio);padding:9px 13px}
+.btn-ghost:hover{background:var(--azul-claro)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;justify-content:flex-end}
+
+.btn-download{
+  background:#fff;border:1.5px solid var(--cinza-borda);
+  color:var(--azul-escuro);padding:13px 24px;font-size:14px;
+  box-shadow:var(--sombra-xs);
+}
+.btn-download:hover{
+  background:var(--azul-claro);border-color:var(--azul-medio);
+  transform:translateY(-1.5px);box-shadow:var(--sombra-sm);
+}
+.btn-download.pdf .ico-svg{color:#c0392b}
+.btn-download.xlsx .ico-svg{color:#1e7d4a}
+
+/* ============================================================
+   TABELA
+   ============================================================ */
+.table-wrap{overflow-x:auto;border:1px solid var(--cinza-borda);border-radius:var(--raio);background:#fff;box-shadow:var(--sombra-xs)}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+th{
+  background:var(--azul-claro);color:var(--azul-escuro);text-align:left;
+  padding:12px 15px;font-weight:600;font-size:12px;white-space:nowrap;
+  border-bottom:1.5px solid var(--cinza-borda);letter-spacing:.2px;
+}
+td{padding:11px 15px;border-bottom:1px solid #f0f3f7;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{transition:background .15s ease}
+tbody tr:hover td{background:#fafbfc}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.mono{font-family:var(--mono);font-size:12px;color:var(--cinza-texto)}
+
+.badge{
+  display:inline-flex;align-items:center;gap:4px;padding:3px 11px;border-radius:20px;font-size:11px;
+  font-weight:600;background:var(--azul-claro);color:var(--azul-ufpb);letter-spacing:.2px;
+}
+.badge.verde{background:var(--verde-claro);color:var(--verde)}
+.badge.vermelho{background:var(--vermelho-claro);color:var(--vermelho)}
+.badge.amarelo{background:#fff3c4;color:#7a5200}
+.badge.cinza{background:#eef1f5;color:var(--cinza-texto)}
+
+/* ============================================================
+   MATERIAIS
+   ============================================================ */
+.material-row{
+  display:grid;grid-template-columns:1fr auto;gap:16px;
+  padding:15px;border:1px solid var(--cinza-borda);border-radius:var(--raio);
+  background:#fff;margin-bottom:9px;align-items:center;transition:var(--transicao);
+}
+.material-row:hover{border-color:var(--azul-medio);box-shadow:var(--sombra-sm);transform:translateY(-1px)}
+.material-info{min-width:0}
+.material-info .nome{
+  font-size:13px;font-weight:600;color:#1a2332;margin-bottom:4px;
+  overflow:hidden;text-overflow:ellipsis;display:-webkit-box;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.4;
+}
+.material-info .meta{font-size:11.5px;color:var(--cinza-texto)}
+.material-info .meta b{color:var(--azul-ufpb)}
+.material-add{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.material-add input{
+  width:76px;padding:10px;border:1.5px solid var(--cinza-borda);border-radius:var(--raio-sm);
+  text-align:center;font-size:14px;font-family:inherit;transition:var(--transicao);font-weight:600;
+}
+.material-add input:focus{outline:none;border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(21,101,168,.12)}
+
+/* ============================================================
+   CARRINHO
+   ============================================================ */
+.cart-item{
+  display:grid;grid-template-columns:1fr 96px auto;gap:14px;align-items:center;
+  padding:13px 15px;border-bottom:1px solid #f0f3f7;
+  transition:background .15s ease;
+}
+.cart-item:hover{background:#fafbfc}
+.cart-item:last-child{border-bottom:none}
+.cart-item .ci-nome{font-size:13px;font-weight:500;line-height:1.45}
+.cart-item .ci-meta{font-size:11.5px;color:var(--cinza-texto);margin-top:3px}
+.cart-item input{
+  width:100%;padding:9px;border:1.5px solid var(--cinza-borda);border-radius:var(--raio-sm);
+  text-align:center;font-size:14px;font-family:inherit;transition:var(--transicao);font-weight:600;
+}
+.cart-item input:focus{outline:none;border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(21,101,168,.12)}
+.cart-item .btn-remove{
+  background:none;border:none;color:var(--vermelho);cursor:pointer;
+  font-size:15px;padding:7px 11px;border-radius:var(--raio-sm);transition:var(--transicao);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.cart-item .btn-remove:hover{background:var(--vermelho-claro)}
+.cart-total{
+  display:flex;justify-content:space-between;padding:15px 18px;
+  background:var(--azul-claro);border-radius:var(--raio);margin-top:14px;
+  font-weight:600;color:var(--azul-escuro);font-size:13.5px;
+  border:1px solid rgba(21,101,168,.1);
+}
+
+/* ============================================================
+   REVISÃO
+   ============================================================ */
+.revisao-bloco{margin-bottom:24px}
+.revisao-bloco h3{
+  font-size:12px;color:var(--azul-ufpb);text-transform:uppercase;
+  letter-spacing:.7px;margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1.5px solid var(--cinza-borda);font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.revisao-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.revisao-item{font-size:13px}
+.revisao-item .k{color:var(--cinza-texto);font-size:11px;text-transform:uppercase;letter-spacing:.4px;font-weight:600;margin-bottom:3px}
+.revisao-item .v{color:#1a2332;font-weight:500;line-height:1.45}
+
+/* ============================================================
+   KPIs
+   ============================================================ */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-bottom:24px}
+.kpi{
+  background:#fff;border:1px solid var(--cinza-borda);border-radius:var(--raio);
+  padding:20px;box-shadow:var(--sombra-sm);transition:var(--transicao);
+  position:relative;overflow:hidden;
+}
+.kpi::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--azul-ufpb),var(--azul-accent));
+  opacity:0;transition:opacity .2s ease;
+}
+.kpi:hover{box-shadow:var(--sombra);transform:translateY(-2px);border-color:#c5d3e0}
+.kpi:hover::before{opacity:1}
+.kpi .kpi-label{font-size:11px;color:var(--cinza-texto);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.kpi .kpi-value{font-size:30px;font-weight:700;color:var(--azul-ufpb);margin-top:10px;line-height:1;letter-spacing:-.8px}
+.kpi .kpi-sub{font-size:11px;color:var(--cinza-texto);margin-top:6px;font-weight:500}
+
+/* ============================================================
+   FILTROS
+   ============================================================ */
+.filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.filtros select,.filtros input{
+  padding:11px 14px;border:1.5px solid var(--cinza-borda);border-radius:var(--raio-sm);
+  font-size:13px;font-family:inherit;background:#fafbfc;width:100%;transition:var(--transicao);
+  color:#1a2332;
+}
+.filtros select:focus,.filtros input:focus{
+  outline:none;border-color:var(--azul-medio);background:#fff;
+  box-shadow:0 0 0 3px rgba(21,101,168,.1);
+}
+
+/* ============================================================
+   SUCESSO
+   ============================================================ */
+.sucesso-box{text-align:center;padding:48px 28px}
+.sucesso-box .check{
+  width:84px;height:84px;border-radius:50%;
+  background:linear-gradient(135deg,var(--verde-claro),#c8ecd8);
+  color:var(--verde);
+  display:grid;place-items:center;margin:0 auto 24px;
+  animation:pop .45s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 8px 24px rgba(30,125,74,.15);
+  border:2px solid rgba(30,125,74,.12);
+}
+.sucesso-box h2{color:var(--verde);font-size:23px;margin-bottom:10px;justify-content:center;font-weight:700;letter-spacing:-.4px}
+.sucesso-box .sub{color:var(--cinza-texto);font-size:14px;margin-bottom:8px}
+.sucesso-box .id-demanda{
+  font-family:var(--mono);font-size:22px;font-weight:700;
+  color:var(--azul-ufpb);background:var(--azul-claro);padding:14px 28px;
+  border-radius:var(--raio);display:inline-block;margin:16px 0 6px;
+  letter-spacing:1.5px;border:1.5px dashed var(--azul-medio);
+}
+.sucesso-acoes{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);
+  background:var(--azul-escuro);color:#fff;padding:14px 22px;border-radius:var(--raio);
+  font-size:13.5px;font-weight:500;box-shadow:0 12px 36px rgba(0,0,0,.28);
+  z-index:2000;opacity:0;transition:.38s cubic-bezier(.4,0,.2,1);pointer-events:none;
+  max-width:min(90vw,520px);border-left:4px solid var(--azul-medio);
+  display:flex;align-items:center;gap:10px;line-height:1.45;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.erro{background:var(--vermelho);border-left-color:#ff8a80}
+.toast.ok{background:var(--verde);border-left-color:#69f0ae}
+
+/* ============================================================
+   ALERTAS
+   ============================================================ */
+.alert{
+  padding:15px 18px;border-radius:var(--raio-sm);font-size:13px;margin-bottom:18px;
+  display:flex;gap:12px;align-items:flex-start;line-height:1.55;
+  border:1px solid transparent;
+}
+.alert .ico-svg{flex-shrink:0;margin-top:1px}
+.alert-info{background:var(--azul-claro);color:var(--azul-ufpb);border-left:3px solid var(--azul-medio);border-color:rgba(21,101,168,.12)}
+.alert-warn{background:var(--amarelo-alerta);color:#7a5200;border-left:3px solid var(--amarelo-borda);border-color:rgba(240,165,0,.18)}
+.alert-erro{background:var(--vermelho-claro);color:var(--vermelho);border-left:3px solid var(--vermelho);border-color:rgba(192,57,43,.12)}
+
+/* ============================================================
+   EMPTY / LOADING
+   ============================================================ */
+.empty{text-align:center;padding:40px 18px;color:var(--cinza-texto);font-size:13.5px}
+.empty .ico-svg{opacity:.35;margin-bottom:12px;color:var(--azul-medio)}
+.loading{text-align:center;padding:52px;color:var(--cinza-texto)}
+.spinner{
+  width:42px;height:42px;border:3px solid var(--azul-claro);
+  border-top-color:var(--azul-ufpb);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto 16px;
+}
+.admin-badge{
+  background:var(--amarelo-alerta);color:#7a5200;padding:3px 11px;
+  border-radius:5px;font-size:10px;font-weight:800;margin-left:8px;letter-spacing:.6px;
+  border:1px solid rgba(240,165,0,.2);
+}
+
+/* ============================================================
+   MEUS PEDIDOS
+   ============================================================ */
+.pedidos-lista{display:flex;flex-direction:column;gap:14px}
+.pedido-card{
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+  padding:18px 20px;border:1.5px solid var(--cinza-borda);border-radius:var(--raio);
+  background:#fff;transition:var(--transicao);box-shadow:var(--sombra-xs);
+}
+.pedido-card:hover{border-color:var(--azul-medio);box-shadow:var(--sombra);transform:translateY(-1px)}
+.pedido-card .pc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.pedido-card .pc-id{
+  font-family:var(--mono);font-weight:700;font-size:14px;color:var(--azul-ufpb);
+  letter-spacing:.5px;
+}
+.pedido-card .pc-titulo{font-size:14.5px;font-weight:600;color:#1a2332;margin-bottom:5px}
+.pedido-card .pc-meta{font-size:12.5px;color:var(--cinza-texto);line-height:1.65}
+.pedido-card .pc-meta b{color:var(--azul-ufpb)}
+.pedido-card .pc-actions{display:flex;gap:9px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:680px){
+  .pedido-card{grid-template-columns:1fr}
+  .pedido-card .pc-actions{justify-content:flex-start}
+}
+
+.tabs{
+  display:flex;gap:4px;margin-bottom:22px;border-bottom:2px solid var(--cinza-borda);
+  padding-bottom:0;overflow-x:auto;
+}
+.tab{
+  padding:13px 22px;border:none;background:none;cursor:pointer;font-family:inherit;
+  font-size:14px;font-weight:600;color:var(--cinza-texto);transition:var(--transicao);
+  border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.tab:hover{color:var(--azul-ufpb)}
+.tab.active{color:var(--azul-ufpb);border-bottom-color:var(--azul-ufpb)}
+.tab .count{
+  display:inline-block;background:var(--azul-claro);color:var(--azul-ufpb);
+  padding:1px 9px;border-radius:11px;font-size:11px;margin-left:2px;font-weight:700;
+}
+.tab.active .count{background:var(--azul-ufpb);color:#fff}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(6,42,77,.5);backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  z-index:4000;display:none;place-items:center;padding:20px;animation:fade .22s ease;
+}
+.modal-overlay.show{display:grid}
+.modal-box{
+  background:#fff;border-radius:16px;padding:30px;max-width:460px;width:100%;
+  box-shadow:0 28px 72px rgba(0,0,0,.32);animation:pop .28s cubic-bezier(.4,0,.2,1);
+  border:1px solid rgba(255,255,255,.1);
+}
+.modal-box h3{font-size:17.5px;color:var(--azul-escuro);margin-bottom:12px;font-weight:700;letter-spacing:-.2px}
+.modal-box p{font-size:14px;color:var(--cinza-texto);margin-bottom:24px;line-height:1.6}
+.modal-box .modal-actions{display:flex;gap:11px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:640px){
+  .modal-box .modal-actions{flex-direction:column-reverse}
+  .modal-box .modal-actions .btn{width:100%;justify-content:center}
+}
+
+/* ============================================================
+   MODAL DE ORIENTAÇÃO DO SETOR
+   ============================================================ */
+.modal-orientacao .modal-box{
+  max-width:500px;
+  border-top:4px solid var(--amarelo-borda);
+}
+.modal-orientacao h3{
+  display:flex;align-items:center;gap:10px;font-size:18px;
+  color:var(--azul-escuro);margin-bottom:18px;
+}
+.modal-orientacao .orientacao-corpo{
+  font-size:14px;color:#1a2332;line-height:1.7;
+}
+.modal-orientacao .orientacao-corpo p{margin-bottom:14px}
+.modal-orientacao .orientacao-corpo .destaque{
+  background:#fff8e1;border-left:3px solid var(--amarelo-borda);
+  padding:12px 16px;border-radius:var(--raio-xs);margin:16px 0;font-size:13.5px;
+}
+.modal-orientacao .orientacao-corpo .exemplo{
+  background:var(--azul-claro);border-left:3px solid var(--azul-medio);
+  padding:12px 16px;border-radius:var(--raio-xs);margin:16px 0;font-size:13.5px;
+  color:var(--azul-ufpb);
+}
+.modal-orientacao .orientacao-corpo .exemplo b{color:var(--azul-escuro)}
+
+/* ============================================================
+   INDICADORES
+   ============================================================ */
+.salvo-indicator{
+  display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--verde);
+  font-weight:600;opacity:0;transition:opacity .3s, transform .3s;padding:7px 14px;
+  background:var(--verde-claro);border-radius:22px;border:1px solid rgba(30,125,74,.12);
+  transform:translateY(-4px);pointer-events:none;
+}
+.salvo-indicator.show{opacity:1;transform:translateY(0)}
+
+.etapa-badge{
+  display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+  padding:4px 11px;border-radius:14px;background:var(--azul-claro);color:var(--azul-ufpb);
+  letter-spacing:.3px;text-transform:uppercase;
+}
+.etapa-badge.rascunho{background:#fff3c4;color:#7a5200}
+.etapa-badge.enviado{background:var(--verde-claro);color:var(--verde)}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media(max-width:720px){
+  main{padding:20px 14px 80px}
+  .card{padding:20px}
+  .card h2{font-size:16px}
+  .stepper{gap:6px;margin-bottom:20px}
+  .step{min-width:108px;font-size:11.5px;padding:9px 12px}
+  .step .num{width:24px;height:24px;font-size:11px}
+  .kpi .kpi-value{font-size:24px}
+  .material-row{grid-template-columns:1fr;gap:10px}
+  .material-add{justify-content:flex-end}
+  .cart-item{grid-template-columns:1fr 76px auto;gap:10px;padding:11px 12px}
+  .actions{flex-direction:column-reverse;gap:10px}
+  .actions .btn{width:100%;justify-content:center}
+  .sucesso-box{padding:32px 16px}
+  .sucesso-box .id-demanda{font-size:18px;padding:12px 18px;letter-spacing:1px}
+  .sucesso-acoes .btn{width:100%;justify-content:center}
+  .login-card{padding:30px 24px}
+  /* Ajuste responsivo do container da logo de login */
+  .login-card .logo-container{width:118px;height:118px;padding:15px;margin-bottom:18px}
+  .topbar-inner{gap:12px}
+  .topbar h1{font-size:13.5px}
+  .topbar p{font-size:10.5px}
+  .topbar nav{width:100%;margin-left:0}
+  .topbar nav button{flex:1;font-size:11.5px;padding:9px 8px;min-width:0;justify-content:center}
+  .topbar nav button .ico-svg{display:none}
+  .topbar .btn-logout{flex:0 0 auto;padding:9px 14px!important}
+  .topbar .btn-logout .ico-svg{display:inline-flex}
+  .pedido-card{padding:15px}
+  .modal-box{padding:24px 20px}
+  .modal-orientacao .modal-box{padding:22px 18px}
+  /* Ajuste responsivo da logo do header */
+  .logo-badge{width:46px;height:46px;padding:5px}
+}
+
+@media(max-width:420px){
+  .topbar nav button span{display:none}
+  .topbar nav button{padding:10px 12px}
+  .topbar nav button .ico-svg{display:inline-flex}
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print{
+  header.topbar, .stepper, .actions, .no-print, .topbar nav, .sucesso-acoes{display:none!important}
+  body{background:#fff}
+  .card{border:none;box-shadow:none;padding:0;margin-bottom:16px}
+  main{padding:0;max-width:100%}
+  .view{display:none!important}
+  .view.print-target{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     BIBLIOTECA DE ÍCONES SVG
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 8h3a2 2 0 012 2v11"/><path d="M2 21h20"/><path d="M8 7h2v2H8zM8 11h2v2H8zM8 15h2v2H8z"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-file-pdf" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h1.5a1.5 1.5 0 010 3H8v-3zM8 16v2M13 13v5M17 13h-2v5"/></symbol>
+    <symbol id="i-file-xls" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13l4 5M12 13l-4 5"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v11z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></symbol>
+    <symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></symbol>
+    <symbol id="i-id-card" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="11" r="2.5"/><path d="M5 18c.5-2 2-3 3.5-3s3 1 3.5 3M15 9h4M15 13h4M15 17h4"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></symbol>
+    <symbol id="i-diagnose" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-document" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     TELA DE LOGIN
+     ============================================================ -->
+<div id="login-screen">
+  <div class="login-card">
+    <!-- LOGO OFICIAL BRANCA — CONTÊINER AZUL ESCURO PARA GARANTIR CONTRASTE -->
+    <div class="logo-container">
+      <img src="https://res.cloudinary.com/dqmuoc3o0/image/upload/v1791304718/Logo_CT_Centro_de_Tecnologia_UFPB_1_dumhgk.png" alt="Logo CT — Centro de Tecnologia UFPB" class="logo-login" />
+    </div>
+    <h1>Levantamento Semestral de Demanda</h1>
+    <p class="sub">Centro de Tecnologia — UFPB</p>
+    <div class="erro-login" id="login-erro">Usuário ou senha inválidos.</div>
+    <div class="field">
+      <label for="login-user"><svg class="ico-svg sm" style="margin-right:5px"><use href="#i-user"/></svg>Usuário</label>
+      <input type="text" id="login-user" placeholder="Digite seu usuário" autocomplete="username" />
+    </div>
+    <div class="field">
+      <label for="login-pass"><svg class="ico-svg sm" style="margin-right:5px"><use href="#i-lock"/></svg>Senha</label>
+      <input type="password" id="login-pass" placeholder="Digite sua senha" autocomplete="current-password" />
+    </div>
+    <button class="btn-login" id="btn-login">
+      <svg class="ico-svg md"><use href="#i-arrow-right"/></svg>
+      Entrar
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="topbar" id="app-header" style="display:none">
+  <div class="topbar-inner">
+    <!-- LOGO OFICIAL BRANCA NO HEADER — FUNDO ESCURO -->
+    <div class="logo-badge">
+      <img src="https://res.cloudinary.com/dqmuoc3o0/image/upload/v1791304718/Logo_CT_Centro_de_Tecnologia_UFPB_1_dumhgk.png" alt="CT — Centro de Tecnologia UFPB" />
+    </div>
+    <div>
+      <h1>Levantamento Semestral de Demanda de Materiais</h1>
+      <p>Centro de Tecnologia — UFPB</p>
+    </div>
+    <nav>
+      <button id="nav-demanda" class="active" onclick="App.go('demanda')">
+        <svg class="ico-svg sm"><use href="#i-edit"/></svg>
+        <span>Nova Demanda</span>
+      </button>
+      <button id="nav-meuspedidos" onclick="App.go('meuspedidos')">
+        <svg class="ico-svg sm"><use href="#i-folder"/></svg>
+        <span>Meus Pedidos</span>
+      </button>
+      <button id="nav-admin" onclick="App.go('admin')">
+        <svg class="ico-svg sm"><use href="#i-chart"/></svg>
+        <span>Painel</span>
+      </button>
+      <button class="btn-logout" onclick="App.logout()">
+        <svg class="ico-svg sm"><use href="#i-log-out"/></svg>
+        <span>Sair</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="app-main" style="display:none">
+
+<!-- ============================================================
+     VIEW: DEMANDA
+     ============================================================ -->
+<section id="view-demanda" class="view active">
+
+  <div class="banner-semestre">
+    <svg class="ico-svg lg"><use href="#i-calendar"/></svg>
+    <div>
+      <h3>DEMANDA SEMESTRAL DE MATERIAIS</h3>
+      <p><b>Atenção:</b> esta é uma <b>previsão de consumo para todo o semestre</b>. Informe a quantidade TOTAL estimada que seu setor necessitará durante o período selecionado — não a quantidade mensal.</p>
+    </div>
+  </div>
+
+  <div class="stepper" id="stepper">
+    <div class="step active" data-step="1"><span class="num">1</span> Identificação</div>
+    <div class="step" data-step="2"><span class="num">2</span> Responsáveis</div>
+    <div class="step" data-step="3"><span class="num">3</span> Contato</div>
+    <div class="step" data-step="4"><span class="num">4</span> Demanda</div>
+    <div class="step" data-step="5"><span class="num">5</span> Revisão</div>
+    <div class="step" data-step="6"><span class="num">6</span> Envio</div>
+  </div>
+
+  <div id="rascunho-indicator" style="display:none;margin-bottom:18px">
+    <div class="alert alert-warn" style="margin-bottom:0">
+      <svg class="ico-svg md"><use href="#i-edit"/></svg>
+      <div>
+        <b>Rascunho em edição:</b> <span id="rascunho-id-label"></span> — continue preenchendo ou
+        <button class="btn-ghost btn-sm" onclick="Rascunhos.descartarEdicao()" style="padding:2px 8px;font-size:12px;text-decoration:underline">descartar rascunho</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="etapa-1" class="card etapa">
+    <h2><svg class="ico-svg lg"><use href="#i-building"/></svg> 1. Identificação</h2>
+    <p class="sub">Selecione o departamento e informe o setor demandante.</p>
+    <div class="grid two">
+      <div class="field" id="f-departamento">
+        <label>Departamento <span class="req">*</span></label>
+        <select id="sel-departamento"><option value="">— Selecione o departamento —</option></select>
+      </div>
+      <div class="field" id="f-setor">
+        <label>Setor Demandante <span class="req">*</span></label>
+        <input type="text" id="inp-setor-manual" placeholder="Clique aqui e digite o nome do setor por extenso" autocomplete="off" />
+        <div class="hint" id="hint-setor">
+          <svg class="ico-svg sm" style="margin-top:1px"><use href="#i-alert"/></svg>
+          <span>Informe o nome completo do setor por extenso. A sigla pode ser incluída ao final (ex.: Laboratório de Química Analítica - LQA).</span>
+        </div>
+      </div>
+      <div class="field" id="f-semestre">
+        <label>Semestre da Demanda <span class="req">*</span></label>
+        <select id="sel-semestre"></select>
+        <div class="hint">
+          <svg class="ico-svg sm" style="margin-top:1px"><use href="#i-info"/></svg>
+          <span>A demanda refere-se a TODO o semestre selecionado.</span>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-outline" onclick="Rascunhos.salvarManual()">
+        <svg class="ico-svg sm"><use href="#i-save"/></svg> Gravar pedido
+      </button>
+      <button class="btn btn-primary" onclick="App.avancar(2)">
+        Avançar <svg class="ico-svg sm"><use href="#i-arrow-right"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="etapa-2" class="card etapa" style="display:none">
+    <h2><svg class="ico-svg lg"><use href="#i-user"/></svg> 2. Responsáveis</h2>
+    <p class="sub">Informe o responsável administrativo/técnico e a chefia do setor. Podem ser a mesma pessoa.</p>
+    <div class="grid two">
+      <div class="field" id="f-responsavel">
+        <label>Responsável Administrativo ou Técnico <span class="req">*</span></label>
+        <input type="text" id="inp-responsavel" placeholder="Nome completo" autocomplete="off" />
+        <div class="hint">
+          <svg class="ico-svg sm" style="margin-top:1px"><use href="#i-info"/></svg>
+          <span>Pessoa que normalmente recebe/auxilia na administração do local.</span>
+        </div>
+      </div>
+      <div class="field" id="f-chefia">
+        <label>Chefia do Setor <span class="req">*</span></label>
+        <input type="text" id="inp-chefia" placeholder="Nome completo" autocomplete="off" />
+        <label style="margin-top:9px;font-weight:400;font-size:12.5px;display:flex;align-items:center;gap:7px;cursor:pointer">
+          <input type="checkbox" id="chk-mesma-pessoa" style="width:auto;accent-color:var(--azul-medio)" />
+          A chefia é a mesma pessoa do responsável
+        </label>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-outline" onclick="Rascunhos.salvarManual()">
+        <svg class="ico-svg sm"><use href="#i-save"/></svg> Gravar pedido
+      </button>
+      <button class="btn btn-outline" onclick="App.voltar(1)">
+        <svg class="ico-svg sm"><use href="#i-arrow-left"/></svg> Voltar
+      </button>
+      <button class="btn btn-primary" onclick="App.avancar(3)">
+        Avançar <svg class="ico-svg sm"><use href="#i-arrow-right"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="etapa-3" class="card etapa" style="display:none">
+    <h2><svg class="ico-svg lg"><use href="#i-phone"/></svg> 3. Contato e Matrícula</h2>
+    <p class="sub">Dados de contato do responsável e do setor.</p>
+    <div class="grid two">
+      <div class="field" id="f-telefone">
+        <label>WhatsApp / Telefone <span class="req">*</span></label>
+        <input type="tel" id="inp-telefone" placeholder="(83) 99999-9999" />
+      </div>
+      <div class="field" id="f-email">
+        <label>E-mail do Setor ou Responsável <span class="req">*</span></label>
+        <input type="email" id="inp-email" placeholder="setor@ct.ufpb.br" />
+      </div>
+      <div class="field" id="f-matricula">
+        <label>Matrícula do Responsável <span class="req">*</span></label>
+        <input type="text" id="inp-matricula" placeholder="Ex.: 1234567" />
+      </div>
+      <div class="field">
+        <label>Observação</label>
+        <textarea id="inp-observacao" placeholder="Informações adicionais (opcional)"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-outline" onclick="Rascunhos.salvarManual()">
+        <svg class="ico-svg sm"><use href="#i-save"/></svg> Gravar pedido
+      </button>
+      <button class="btn btn-outline" onclick="App.voltar(2)">
+        <svg class="ico-svg sm"><use href="#i-arrow-left"/></svg> Voltar
+      </button>
+      <button class="btn btn-primary" onclick="App.avancar(4)">
+        Avançar <svg class="ico-svg sm"><use href="#i-arrow-right"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="etapa-4" class="card etapa" style="display:none">
+    <h2><svg class="ico-svg lg"><use href="#i-package"/></svg> 4. Demanda Semestral de Materiais</h2>
+    <p class="sub">Escolha o grupo, selecione os materiais e informe a quantidade TOTAL para o semestre.</p>
+    <div class="alert alert-warn">
+      <svg class="ico-svg md"><use href="#i-alert"/></svg>
+      <div><b>Atenção:</b> informe a quantidade TOTAL estimada para <b>todo o semestre</b>, não a quantidade mensal. Esta é uma previsão para planejamento — não representa baixa imediata de estoque.</div>
+    </div>
+    <div class="field" style="margin-bottom:16px">
+      <label>Grupo de Material</label>
+      <select id="sel-grupo"><option value="">— Selecione um grupo —</option></select>
+    </div>
+    <div id="lista-materiais">
+      <div class="empty">
+        <svg class="ico-svg xxl"><use href="#i-clipboard"/></svg>
+        <div>Selecione um grupo acima para visualizar os materiais.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:22px;background:#fafbfc;border-style:dashed">
+      <h2 style="font-size:15px"><svg class="ico-svg md"><use href="#i-list"/></svg> Minha Demanda Semestral</h2>
+      <div id="cart-items">
+        <div class="empty" style="padding:18px">
+          <svg class="ico-svg xl"><use href="#i-clipboard"/></svg>
+          <div>Nenhum material adicionado ainda.</div>
+        </div>
+      </div>
+      <div class="cart-total">
+        <span>Materiais: <b id="cart-count">0</b></span>
+        <span>Total de unidades: <b id="cart-total">0</b></span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-outline" onclick="Rascunhos.salvarManual()">
+        <svg class="ico-svg sm"><use href="#i-save"/></svg> Gravar pedido
+      </button>
+      <button class="btn btn-outline" onclick="App.voltar(3)">
+        <svg class="ico-svg sm"><use href="#i-arrow-left"/></svg> Voltar
+      </button>
+      <button class="btn btn-primary" onclick="App.avancar(5)">
+        Revisar Demanda <svg class="ico-svg sm"><use href="#i-arrow-right"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="etapa-5" class="card etapa" style="display:none">
+    <h2><svg class="ico-svg lg"><use href="#i-check-circle"/></svg> Confira sua Demanda Semestral</h2>
+    <p class="sub">Revise todas as informações antes de enviar.</p>
+    <div class="revisao-bloco">
+      <h3><svg class="ico-svg sm"><use href="#i-user"/></svg> Dados do Solicitante</h3>
+      <div class="revisao-grid" id="rev-dados"></div>
+    </div>
+    <div class="revisao-bloco">
+      <h3><svg class="ico-svg sm"><use href="#i-package"/></svg> Materiais Solicitados</h3>
+      <div class="table-wrap">
+        <table id="rev-tabela">
+          <thead>
+            <tr>
+              <th>Grupo</th><th>Material</th><th>Código</th>
+              <th class="num">Saldo</th><th class="num">Qtd.</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-outline" onclick="Rascunhos.salvarManual()">
+        <svg class="ico-svg sm"><use href="#i-save"/></svg> Gravar pedido
+      </button>
+      <button class="btn btn-outline" onclick="App.voltar(4)">
+        <svg class="ico-svg sm"><use href="#i-arrow-left"/></svg> Editar Demanda
+      </button>
+      <button class="btn btn-success" onclick="App.enviar()">
+        <svg class="ico-svg sm"><use href="#i-send"/></svg> Confirmar e Enviar
+      </button>
+    </div>
+  </div>
+
+  <div id="etapa-6" class="card etapa" style="display:none">
+    <div class="sucesso-box">
+      <div class="check"><svg class="ico-svg xxl"><use href="#i-check"/></svg></div>
+      <h2>Demanda enviada com sucesso!</h2>
+      <p class="sub">Sua demanda semestral foi registrada.</p>
+      <div class="id-demanda" id="sucesso-id">DEM-0000-00000</div>
+      <div id="sucesso-detalhes" style="margin-top:18px;text-align:left;max-width:540px;margin-left:auto;margin-right:auto"></div>
+      <div class="sucesso-acoes">
+        <button class="btn btn-download pdf" onclick="Download.baixarPDF()">
+          <svg class="ico-svg md"><use href="#i-file-pdf"/></svg> Baixar PDF
+        </button>
+        <button class="btn btn-download xlsx" onclick="Download.baixarXLSX()">
+          <svg class="ico-svg md"><use href="#i-file-xls"/></svg> Baixar planilha
+        </button>
+        <button class="btn btn-primary" onclick="App.novoPedido()">
+          <svg class="ico-svg sm"><use href="#i-plus"/></svg> Nova demanda
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     VIEW: MEUS PEDIDOS
+     ============================================================ -->
+<section id="view-meuspedidos" class="view">
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-folder"/></svg> Meus Pedidos</h2>
+    <p class="sub">Gerencie seus rascunhos e consulte as demandas já enviadas.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="rascunhos" onclick="MeusPedidos.switchTab('rascunhos')">
+        <svg class="ico-svg sm"><use href="#i-edit"/></svg> Rascunhos <span class="count" id="count-rascunhos">0</span>
+      </button>
+      <button class="tab" data-tab="enviados" onclick="MeusPedidos.switchTab('enviados')">
+        <svg class="ico-svg sm"><use href="#i-check-circle"/></svg> Enviados <span class="count" id="count-enviados">0</span>
+      </button>
+    </div>
+
+    <div id="tab-rascunhos">
+      <div id="lista-rascunhos" class="pedidos-lista">
+        <div class="empty">
+          <svg class="ico-svg xxl"><use href="#i-edit"/></svg>
+          <div>Nenhum rascunho salvo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-enviados" style="display:none">
+      <div id="lista-enviados" class="pedidos-lista">
+        <div class="empty">
+          <svg class="ico-svg xxl"><use href="#i-check-circle"/></svg>
+          <div>Nenhuma demanda enviada ainda.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: ADMIN
+     ============================================================ -->
+<section id="view-admin" class="view">
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-chart"/></svg> Painel Administrativo <span class="admin-badge">ADMIN</span></h2>
+    <p class="sub">Consolidação das demandas recebidas. Filtre por semestre, departamento, grupo ou material.</p>
+    <div class="filtros">
+      <select id="adm-semestre"><option value="">Todos os semestres</option></select>
+      <select id="adm-departamento"><option value="">Todos os departamentos</option></select>
+      <select id="adm-grupo"><option value="">Todos os grupos</option></select>
+      <input type="text" id="adm-busca" placeholder="Buscar material ou código..." />
+    </div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap">
+      <button class="btn btn-outline btn-sm" onclick="Admin.render()">
+        <svg class="ico-svg sm"><use href="#i-refresh"/></svg> Atualizar
+      </button>
+      <button class="btn btn-outline btn-sm" onclick="Admin.exportarCSV()">
+        <svg class="ico-svg sm"><use href="#i-download"/></svg> Exportar CSV
+      </button>
+      <button class="btn btn-outline btn-sm" onclick="Admin.diagnosticarAPI()">
+        <svg class="ico-svg sm"><use href="#i-diagnose"/></svg> Diagnosticar API
+      </button>
+    </div>
+    <div id="adm-diag" style="margin-top:12px;font-size:12.5px;color:var(--cinza-texto);line-height:1.5"></div>
+  </div>
+
+  <div class="kpi-grid" id="adm-kpis"></div>
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-package"/></svg> Demanda Consolidada por Material</h2>
+    <p class="sub">Saldo de estoque × demanda semestral × saldo após demanda.</p>
+    <div class="table-wrap">
+      <table id="adm-tabela-material">
+        <thead><tr>
+          <th>Código</th><th>Material</th><th>Grupo</th>
+          <th class="num">Saldo</th><th class="num">Demanda</th><th class="num">Saldo após</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-building"/></svg> Demanda por Setor</h2>
+    <div class="table-wrap">
+      <table id="adm-tabela-setor">
+        <thead><tr>
+          <th>Departamento</th><th>Setor</th>
+          <th class="num">Linhas</th><th class="num">Total demandado</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-home"/></svg> Demanda por Departamento</h2>
+    <div class="table-wrap">
+      <table id="adm-tabela-departamento">
+        <thead><tr>
+          <th>Departamento</th><th class="num">Linhas de itens</th><th class="num">Demanda total</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-tag"/></svg> Demanda por Grupo de Material</h2>
+    <div class="table-wrap">
+      <table id="adm-tabela-grupo">
+        <thead><tr>
+          <th>Grupo</th><th>Descrição</th>
+          <th class="num">Materiais distintos</th><th class="num">Total demandado</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><svg class="ico-svg lg"><use href="#i-clipboard"/></svg> Demandas Recebidas</h2>
+    <div class="table-wrap">
+      <table id="adm-tabela-demandas">
+        <thead><tr>
+          <th>ID</th><th>Data/Hora</th><th>Semestre</th>
+          <th>Departamento</th><th>Setor</th>
+          <th class="num">Itens</th><th class="num">Qtd</th><th>Status</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     MODAL DE CONFIRMAÇÃO GENÉRICO
+     ============================================================ -->
+<div class="modal-overlay" id="modal-confirm">
+  <div class="modal-box">
+    <h3 id="modal-title">Confirmação</h3>
+    <p id="modal-msg">Tem certeza?</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="modal-btn-cancelar" onclick="Modal.fechar()">Cancelar</button>
+      <button class="btn btn-primary" id="modal-btn-confirmar">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL DE ORIENTAÇÃO DO SETOR DEMANDANTE
+     ============================================================ -->
+<div class="modal-overlay modal-orientacao" id="modal-orientacao-setor">
+  <div class="modal-box">
+    <h3>
+      <svg class="ico-svg lg" style="color:var(--amarelo-borda)"><use href="#i-alert"/></svg>
+      Atenção ao informar o setor
+    </h3>
+    <div class="orientacao-corpo">
+      <p>Clique no campo abaixo e informe o <b>nome completo do setor, por extenso</b>.</p>
+      <div class="destaque">
+        <b>Evite</b> informar apenas abreviações ou siglas, como <b>DEQ, DEA, PPGECAM</b>, entre outras.
+      </div>
+      <p>A sigla pode ser informada <b>ao final do nome completo</b>, por exemplo:</p>
+      <div class="exemplo">
+        <b>Departamento de Engenharia Química - DEQ</b>
+      </div>
+      <p style="margin-bottom:0"><b>Exemplo:</b> Laboratório de Química Analítica - LQA</p>
+    </div>
+    <div class="modal-actions" style="margin-top:24px">
+      <button class="btn btn-primary" id="btn-entendi-setor">
+        <svg class="ico-svg sm"><use href="#i-check"/></svg>
+        Entendi, informar setor
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   BASE DE MATERIAIS (FALLBACK) — INTACTA
+   ============================================================ */
+window.__MATERIAIS_FALLBACK__ = [
+  {"grupo":"3003","descGrupo":"Combustíveis e derivados","codigo":"3003000000104","material":"QUEROSENE FILTRADO ACONDICIONADO EM EMBALAGEM PLÁSTICA COM TAMPA E BICO DOSADOR. COMPOSIÇÃO PRINCIPAL: HIDROCARBONETOS.","saldo":34},
+  {"grupo":"3007","descGrupo":"Água mineral e bebidas","codigo":"3007000003224","material":"ITEM 01 - ÁGUA MINERAL NATURAL, SEM GÁS, ACONDICIONADA EM EMBALAGEM RETORNÁVEL, GARRAFÃO COM CAPACIDADE DE 20 LITROS","saldo":30},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007529","material":"01 - CLORETO DE COBALTO II, ASPECTO FÍSICO:CRISTAL ROSA A VERMELHO, 98%, ACS. OBS: INTENCIONAR A QUANTIDADE TOTAL DE GRAMAS QUE PRETENDE ADQUIRIR. A QUANTIDADE DEVERÁ SER DIVISÍVEL POR 250G QUE SERÁ A FORMA DE ENTREGA.","saldo":50},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007421","material":"01 - ÁCIDO OXÁLICO, ASPECTO FÍSICO CRISTAL OU PÓ BRANCO CRISTALINO HIGROSCÓPICO. OBS: INTENCIONAR A QUANTIDADE TOTAL DE GRAMAS QUE PRETENDE ADQUIRIR. A QUANTIDADE DEVERÁ SER DIVISÍVEL POR 500G QUE SERÁ A FORMA DE ENTREGA.","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008507","material":"1-BUTANOL; N-BUTANOL; ÁLCOOL N-BUTÍLICO - ALPHATEC 1000 ML","saldo":5},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008940","material":"ACETONA, ASPECTO FÍSICO: LÍQUIDO LÍMPIDO TRANSPARENTE. FRASCO COM 1 LITRO.","saldo":7},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007863","material":"BALÃO VOLUMETRICO, 1000ML, VIDRO, COM TAMPA","saldo":6},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009008","material":"BROMETO DE CETILTRIMETILAMÔNIO, ASPECTO FÍSICO:PÓ BRANCO CRISTALINO, FÓRMULA QUÍMICA:(CH3) (CH2)15N(BR)(CH3)3, PESO MOLECULAR:364,45 G/MOL, GRAU DE PUREZA:PUREZA MÍNIMA DE 99%","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008972","material":"CALDO E. COLI","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008973","material":"CALDO LAURIL SULFATO TRIPTOSE","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007537","material":"CARBONATO DE CÁLCIO, ASPECTO FÍSICO PRECIPITADO, PÓ BRANCO, FINO, INODORO","saldo":8},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000006749","material":"CARBONATO DE CÁLCIO, ASPECTO FÍSICO PRECIPITADO,PÓ BRANCO, FINO, INODORO. MATERIAL FORNECIDO EM FRASCOS COM 1KG.","saldo":4},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008415","material":"CARBONATO DE SÓDIO (TIPO BARRILHA), PÓ BRANCO, INODORO, NA2CO3 ANIDRO, 105,99 G/MOL, PARA FABRICAÇÃO DE SABÃO.","saldo":4},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007029","material":"CLORETO DE SÓDIO P.A., APRESENTAÇÃO SÓLIDO, FRASCO DE 1000G","saldo":14},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000006729","material":"CLOROFÓRMIO, ASPECTO FÍSICO: LÍQUIDO CLARO, INCOLOR, ODOR FORTE CARACTERÍSTICO, PESO MOLECULAR: 119,38 G,MOL. APRESENTAÇÃO: LITRO","saldo":10},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007374","material":"CORANTE, CONJUNTO COLORAÇÃO DE TRICRÔMIO DE MASSON, HEMATOXILINA WEIGERT, ÁCIDO PÍCRICO, FUCSINA MALLORY, AZUL ANILINA MASSON, FRASCO COM 1000ML","saldo":0.1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008830","material":"CUMARINA - GRAMA","saldo":250},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008121","material":"HIDROXIDO DE SODIO MICROPEROLAS PA ACS (SODAPEROLA) 500G","saldo":42},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009039","material":"HIDRÓXIDO DE SÓDIO, ASPECTO FÍSICO ESCAMAS ESBRANQUIÇADAS, ALTAMENTE HIGROSCÓPICO, PESO MOLECULAR 40, FÓRMULA QUÍMICA NAOH, GRAU DE PUREZA PUREZA MÍNIMA DE 95, CARACTERÍSTICA ADICIONAL SODA CÁUSTICA COMERCIAL, NÚMERO DE REFERÊNCIA QUÍMICA CAS 1310- 73-2","saldo":2},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009036","material":"HIPOCLORITO DE SÓDIO, ASPECTO FÍSICO LÍQUIDO AMARELO ESVERDEADO, CONCENTRAÇÃO TEOR MÍNIMO DE 12 DE CLORO ATIVO, CARACTERÍSTICAS ADICIONAIS ESTABILIZADO","saldo":3},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000006661","material":"INSETICIDA LÍQUIDO EM SPRAY AEROSOL","saldo":42},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000006899","material":"MEIO DE CULTURA, TIPO ÁGAR PCA CT - DEPARTAMENTO DE","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009057","material":"MEIO DE CULTURA, TIPO: CALDO MUELLER HINTON, APRESENTAÇÃO:PÓ. FORMA DE APRESENTAÇÃO: FRASCO 500G","saldo":2},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007079","material":"NITRATO DE COBALTO, ASPECTO FÍSICO:PÓ VERMELHO CRISTALINO, LEVE ODOR DE ÁCIDO NÍTRICO, FÓRMULA QUÍMICA: CO(NO3)2.6H2O (COBALTO II). FORMA DE APRESENTAÇÃO: FRASCO COM 250 G","saldo":4},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008991","material":"NITRATO DE CÁDMIO","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007083","material":"NITRATO DE LANTÂNIO PH 0 A 14 GRADUAÇÃO DE 1.","saldo":3},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009038","material":"PIRIDINA, ASPECTO FÍSICO:LÍQUIDO INCOLOR OU AMARELADO, 99%. EMBALAGEM COM 1 LITRO.","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007206","material":"SOLUÇÃO TAMPÃO LEITURA PH 4,0, APLICAÇÃO CALIBRAGEM DE PEAGÂMETRO. FORMA DE APRESENTAÇÃO: FRASCO COM 500 ML","saldo":3},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007643","material":"SOLUÇÃO TAMPÃO LEITURA PH 7,0, APLICAÇÃO CALIBRAGEM DE PEAGÂMETRO. COTAÇÃO E FORNECIMENTO: FRASCO COM 500 ML","saldo":2},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008829","material":"VANILINA, ASPECTO FÍSICO PÓ CRISTALINO BRANCO - GRAMA","saldo":99},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007377","material":"XILOL: REAGENTE, ASPECTO FÍSICO LÍQUIDO, APLICAÇÃO CITOLOGIA, TIPO XILOL P.A., EMBALAGEM EM FRASCO DE VIBRO ÂMBAR. (LITRO)","saldo":8},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007402","material":"ÁCIDO ACÉTICO, ASPECTO FÍSICO LÍQUIDO LÍMPIDO TRANSPARENTE - FRASCO COM 1L","saldo":10},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007347","material":"ÁCIDO BÓRICO P.A. ACS, SINÔNIMO: ÁCIDO BORÁCICO, NR CAS: 10043353, PUREZA: 99,5%, HIDRATAÇÃO: ANIDRO, FÓRMULA: H3BO3, MASSA: 61.00%. FRASCO 1KG","saldo":2},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008944","material":"ÁCIDO CLORÍDRICO, ASPECTO FÍSICO: LÍQUIDO LÍMPIDO, INCOLOR AMARELADO, FUMEGANTE. FRASCO COM 1 LITRO.","saldo":3},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008825","material":"ÁCIDO CÍTRICO P.A. FÓRMULA QUÍMICA: C6H8O7 - FRASCO COM 1000ML","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007441","material":"ÁCIDO FOSFÓRICO (OU ÁCIDO ORTOFOSFÓRICO), ASPECTO FÍSICO LÍQUIDO INCOLOR - PARTICIPANTE NO PREGÃO 01/2017 DA UASG 153045 UFC","saldo":4},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000006975","material":"ÁCIDO GÁLICO, COMPOSIÇÃO QUÍMICA C6H2(OH)3COOH ANIDRO","saldo":4},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007327","material":"ÁCIDO OXÁLICO, ASPECTO FÍSICO CRISTAL OU PÓ BRANCO CRISTALINO HIGROSCÓPICO","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000007463","material":"ÁCIDO TÂNICO, ASPECTO FÍSICO PÓ MARROM AMARELADO, FÓRMULA QUÍMICA C76H52O46","saldo":2},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000009054","material":"ÁGAR SABOURAUD; MEIO DE CULTURA, TIPO ÁGAR SABOURAUD, APRESENTAÇÃO PÓ, ADITIVOS COM CLORANFENICOL","saldo":1},
+  {"grupo":"3011","descGrupo":"Produtos químicos, reagentes e insumos laboratoriais","codigo":"3011000008831","material":"ÁLCOOL ETÍLICO, TIPO HIDRATADO,TEOR ALCOÓLICO 70% - APRESENTAÇÃO LÍQUIDO. COTAÇÃO E UNIDADE DE FORNECIMENTO EM LITRO","saldo":220},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005937","material":"001 CARIMBO AUTOMÁTICO 7,5X3,8CM","saldo":3},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005939","material":"004 REFIL PARA CARIMBO AUTOMÁTICO 4911","saldo":3},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005894","material":"040 PINCEL MARCADOR PERMANENTE CD, COR AZUL","saldo":3},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000004946","material":"041 PINCEL MARCADOR PERMANENTE CD COR PRETA","saldo":103},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006063","material":"ALFINETE MAPA, MATERIAL:AÇO, MATERIAL CABEÇA:PLÁSTICO, FORMATO CABEÇA:REDONDO, COR:VARIADA. CAIXA COM 50 UNIDADES","saldo":5},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006106","material":"ALFINETE PARA MAPAS - COM CABEÇA PLÁSTICA REDONDA COLORIDA, TRATAMENTO SUPERFICIAL NIQUELADO. EMBALAGEM COM 50 UNIDADES, CORES SORTIDAS.","saldo":16},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006065","material":"APAGADOR PARA QUADRO BRANCO, BASE DE PLÁSTICO, 15X6X4 CM","saldo":264},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005858","material":"APAGADOR PARA QUADRO NEGRO","saldo":11},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006110","material":"APONTADOR COLORIDO, CORPO PLÁSTICO TRANSPARENTE, DE 01 (UM) FURO, COM LÂMINA DE AÇO, FORMATO VERTICAL E RETANGULAR, COM DEPÓSITO. PRODUTO REGISTRADO NO INMETRO.","saldo":3},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005756","material":"APONTADOR ESCOLAR AMARELO","saldo":2},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006714","material":"BARBANTE EM ALGODÃO, COR: BRANCA, TAMANHO MÍNIMO: 180 METROS, QUANTIDADE MÍNIMA DE FIOS: 8.","saldo":70},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006701","material":"BLOCO ADESIVO 75 X 100MM AMARELO","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006070","material":"BLOCO DE RASCUNHO PAUTADO COM 50 FOLHAS PARA ANOTAÇÕES EM EVENTOS","saldo":430.6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006071","material":"BLOCO DE RECADO AMARELO AUTOADESIVO MEDINDO NO MÍNIMO 75MMX75MM COM 100 FOLHAS","saldo":51},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005920","material":"BLOCO DESENHO A3, 420MM X 297 MM, GRAMATURA MÍNIMA DE 140G/M², COR BRANCA, APLICAÇÃO DESENHO ARTÍSTICO. BLOCO COM 20 FOLHAS.","saldo":162.88},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005964","material":"BORRACHA APAGADORA ESCRITA COM CAPA PLÁSTICA PROTETORA.","saldo":34},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005703","material":"BORRACHA APAGADORA ESCRITA, DIMENSÕES MÍNIMAS, COMPRIMENTO 40 MM, LARGURA 20MM, ALTURA 14MM, COR BRANCA, TIPO MACIA, COM CAPA PLÁSTICA PROTETORA DE VINIL.","saldo":69.4},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005698","material":"BORRACHA BICOLOR (AZUL E VERMELHA) PARA LÁPIS E TINTA","saldo":222},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005913","material":"CADERNO UNIVERSITÁRIO, COM 96 FOLHAS PAUTADAS (APROXIMADAMENTE)","saldo":90},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005966","material":"CADERNO UNIVERSITÁRIO, COM 96 FOLHAS PAUTADAS (APROXIMADAMENTE). COM ESPIRAL, CAPA DURA 1X1, CAPA LISA COM UMA COR. MEDIDA MÍNIMA DE 270 X 200 MM. MATERIAL: PAPEL OFF-SET 56G/M².","saldo":12},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000002937","material":"CAIXA ARQUIVO","saldo":154},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006560","material":"CAIXA PLÁSTICA ORGANIZADORA PARA PASTA SUSPENSA COM TAMPA, CAPACIDADE PARA NO MÍNIMO 05 PASTAS SUSPENSAS, MEDINDO APROXIMADAMENTE 17 X 48 X 28 CM, COR FOSCA OU OPACA. ADMITE-SE UMA VARIAÇÃO DE NO MÁXIMO 2CM NAS DIMENSÕES.","saldo":18},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006196","material":"CANETA ESFEROGRÁFICA ESCRITA FINA TIPO CRISTAL, TINTA COR AZUL.","saldo":800},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006197","material":"CANETA ESFEROGRÁFICA ESCRITA FINA TIPO CRISTAL, TINTA COR PRETA.","saldo":186},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006198","material":"CANETA ESFEROGRÁFICA ESCRITA FINA TIPO CRISTAL, TINTA COR VERMELHA.","saldo":114},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006355","material":"CANETA ESFEROGRÁFICA ESCRITA FINA( 0.7 OU INFERIOR). TINTA COR AZUL","saldo":322.49},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005807","material":"CANETA ESFEROGRÁFICA ESCRITA FINA( 0.7 OU INFERIOR). TINTA COR PRETA","saldo":741.49},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005700","material":"CANETA ESFEROGRÁFICA ESCRITA FINA( 0.7 OU INFERIOR). TINTA COR VERMELHA","saldo":400.49},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006386","material":"CANETA MARCA-TEXTO VERDE","saldo":8},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005774","material":"CANETA TIPO MARCA-TEXTO, PONTA POROSA CHANFRADA DE ESCRITA COM 5.0 MM DE DIÂMETRO","saldo":18.25},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006194","material":"CANETA TIPO MARCA-TEXTO, PONTA POROSA CHANFRADA, TINTA AMARELA.","saldo":149},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006193","material":"CANETA TIPO MARCA-TEXTO, PONTA POROSA CHANFRADA, TINTA VERDE.","saldo":12},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005808","material":"CANETA TIPO MARCA-TEXTO, TINTA ROSA","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005745","material":"CANETA TIPO MARCA-TEXTO, TINTA VERDE.","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006074","material":"CARTOLINA 150 G/M2, 500 X 660 MM, AMARELA (PCT COM 100 FOLHAS)","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006075","material":"CARTOLINA 150 G/M2, 500 X 660 MM, AZUL (PCT COM 100 FOLHAS)","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006076","material":"CARTOLINA 150 G/M2, 500 X 660 MM, BRANCA (PCT COM 100 FOLHAS)","saldo":0.9},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005809","material":"CARTOLINA 180 G/M2, 550 X 730 MM, BRANCA (PCT COM 100 FOLHAS), MARCA REGISTRADA.","saldo":0.05},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006052","material":"CARTOLINA 180 G/M2, 550 X 730 MM, VERDE (PCT COM 100 FOLHAS), MARCA REGISTRADA.","saldo":0.03},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005738","material":"CLIPE, EM ARAME DE AÇO, COM ACABAMENTO NIQUELADO, TRATAMENTO ANTIFERRUGEM, Nº 1/0, CAIXA COM 100 UNIDADES.","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006029","material":"CLIPE, EM ARAME DE AÇO, Nº 2/0, CAIXA COM 100 UNIDADES.","saldo":81},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006207","material":"CLIPE, EM ARAME DE AÇO, Nº 6/0.","saldo":59},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006208","material":"CLIPE, EM ARAME DE AÇO, Nº 8/0, CAIXA COM 25 UNIDADES.","saldo":27},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006258","material":"CLIPES DE PLÁSTICO PARA PAPEL, CORES: VARIADAS, TAMANHO: 2/0, MATERIAL: PLÁSTICO.","saldo":19},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005978","material":"COLA BRANCA EXTRA 500 G, ADESIVO PVA, EMBALAGEM DE 500 G","saldo":10.6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005751","material":"COLA BRANCA LÍQUIDA ATÓXICA, TUBO PLÁSTICO COM 90G, TIPO PASTOSA","saldo":169},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006210","material":"COLA BRANCA LÍQUIDA ATÓXICA, TUBO PLÁSTICO COM 90G.","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006691","material":"COLA EM BASTÃO, 40G TUBO PLÁSTICO COM 90G.","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006212","material":"COLA INSTANTÂNEA TEMPO COLAGEM 10 SEGUNDOS, EMBALAGEM COM 3G.","saldo":13},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005722","material":"COLCHETES GALVANIZADOS Nº 13 PARA PAPÉIS. CAIXA COM 72 UNIDADES. MARCA REGISTRADA.","saldo":7},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006214","material":"CORRETIVO EM FITA","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006221","material":"ENVELOPE, PAPEL KRAFT NATURAL, 80 G/M2, SACO COMUM, 260 X 360 MM, SEM IMPRESSÃO, MARCA REGISTRADA. PACOTE C/ 100UND","saldo":2338},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005762","material":"ESTILETE LARGO","saldo":167.06},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006261","material":"ETIQUETA ADESIVA (101,60 X 33,90)","saldo":3},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006574","material":"ETIQUETA ADESIVA BRANCA, MEDINDO 17X31MM, TAMANHO A4, CAIXA COM 25 FOLHAS, 96 ETIQUETAS POR FOLHA.","saldo":26},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006577","material":"ETIQUETA AUTO ADESIVA BRANCA, MEDINDO 25,4 X 101,6 MM (CX COM 100 FOLHAS, 20 ETIQUETAS POR FOLHA).","saldo":37},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005812","material":"EXTRATOR GRAMPO, MATERIAL AÇO, TIPO ESPÁTULA, TRATAMENTO SUPERFICIAL NIQUELADO","saldo":26},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006692","material":"FITA ADESIVA 3M","saldo":42},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005739","material":"FITA ADESIVA COLORIDA MEDINDO NO MÍNIMO 12MMX30M.","saldo":29},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005985","material":"FITA ADESIVA CREPE TIPO MONOFACE, À BASE DE BORRACHA E RESINA SINTÉTICAS, EM ROLO COM LARGURA MÍNIMA DE 48MM E COMPRIMENTO DE 50M.","saldo":20},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006257","material":"FITA ADESIVA DUPLA FACE TRANSPARENTE MEDINDO NO MÍNIMO 18MMX30M","saldo":20},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005712","material":"FITA ADESIVA TRANSPARENTE MEDINDO NO MÍNIMO 12MMX30M.","saldo":165},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006468","material":"FITA ADESIVA, MATERIAL POLIPROPILENO TRANSPARENTE, TIPO MONOFACE, LARGURA 12 MM, COMPRIMENTO 30 M, APLICAÇÃO MULTIUSO","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006572","material":"FITA ADESIVA, MATERIAL POLIPROPILENO TRANSPARENTE, TIPO MONOFACE, LARGURA 19 MM, COMPRIMENTO 50 M, COR INCOLOR, APLICAÇÃO MULTIUSO","saldo":20.11},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006465","material":"FITA ADESIVA, MATERIAL POLIPROPILENO TRANSPARENTE, TIPO MONOFACE, LARGURA 48 MM, COMPRIMENTO 50 M, COR INCOLOR, APLICAÇÃO MULTIUSO","saldo":110},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006557","material":"GRAMPEADOR 40 FLS","saldo":36},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005990","material":"GRAMPO GALVANIZADO PARA GRAMPEADOR SEMI-INDUSTRIAL, TAMANHO 23/13 (CAIXA COM 1.000 UNIDADES).","saldo":10},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006322","material":"GRAMPO GALVANIZADO PARA GRAMPEADOR SEMI-INDUSTRIAL, TAMANHO 23/8 PARA GRAMPEAR 50 FOLHAS (CAIXA COM 5.000 UNIDADES).","saldo":7},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006282","material":"GRAMPO GRAMPEADOR, TAMANHO 26/6","saldo":58},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006152","material":"LIVRO DE PROTOCOLO, COM 100 FOLHAS, CAPA DURA","saldo":4},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005741","material":"LÁPIS 2B","saldo":211.22},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005991","material":"LÁPIS GRAFITE PRETO 6B","saldo":206.32},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006372","material":"LÁPIS GRAFITE PRETO Nº2 HB REDONDO CIS","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006578","material":"LÁPIS PRETO, MATERIAL CORPO MADEIRA, DIÂMETRO CARGA 2 MM, DUREZA CARGA 2H, FORMATO CORPO CILÍNDRICO, CARACTERÍSTICAS ADICIONAIS SEM BORRACHA APAGADORA, MATERIAL CARGA GRAFITE","saldo":501},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006583","material":"LÁPIS PURO GRAFITE 3B. COTAÇÃO REFERENTE A CX COM 12 CORES.","saldo":25},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006487","material":"MARCADOR AZUL PARA QUADRO BRANCO, COTA 5%","saldo":80},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005795","material":"MARCADOR AZUL PARA QUADRO BRANCO, RECARREGÁVEL POR TROCA DE REFIL E PONTA SUBSTITUÍVEL","saldo":415},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006684","material":"MARCADOR PARA QUADRO PRETO","saldo":85},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006685","material":"MARCADOR PARA QUADRO VERMELHO","saldo":35},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005771","material":"MARCADOR PRETO PARA QUADRO BRANCO, RECARREGÁVEL POR TROCA DE REFIL E PONTA SUBSTITUÍVEL","saldo":297},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005783","material":"MARCADOR VERMELHO PARA QUADRO BRANCO, RECARREGÁVEL POR TROCA DE REFIL E PONTA SUBSTITUÍVEL","saldo":85},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006423","material":"PAPEL A4 , GRAMATURA DE 120G/M². COR BRANCA. EMBALAGEM LACRADA DE FÁBRICA CONTENDO 50 FOLHAS.","saldo":31},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006422","material":"PAPEL A4 , GRAMATURA DE 90G/M².COR BRANCA. EMBALAGEM LACRADA DE FÁBRICA. CADA PACOTE DEVERÁ CONTER 500 FOLHAS, (RESMA), EMBALAGEM INDIVIDUAL COM PAPEL PROTETOR CONTRA UMIDADE.","saldo":205},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005813","material":"PAPEL A4 COLORIDO(AZUL, VERDE,ROSA OU AMARELO - A DEFINIR NA ENTREGA); GRAMATURA DE 75G/M²; CADA PACOTE DEVERÁ CONTER 500 FOLHAS (RESMA)","saldo":181},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006457","material":"PAPEL A4 RECICLADO 75G/M - RESMA","saldo":106},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006591","material":"PAPEL BRANCO PARA FLIP-CHART, 56 G/M2, MEDINDO NO MÍNIMO 63X87CM (PACOTE COM 50 FOLHAS).","saldo":7},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005787","material":"PAPEL COUCHÊ BRILHO, BRANCO, 180G/M2, TAMANHO A4, (PACOTE COM 50 FOLHAS)","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006035","material":"PAPEL SULFITE A4. GRAMATURA: 75G/M² DIMENSÕES: 210 MM (LARGURA) X 297 MM (COMPRIMENTO). COR: BRANCA","saldo":450},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006086","material":"PAPEL TEXTURA CASCA DE OVO, BRANCO, TAMANHO A4, GRAMATURA 180 G/M2, (PACOTE COM 50 FOLHAS),","saldo":1},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006327","material":"PAPEL TEXTURA LINHO, BRANCO, TAMANHO A4, GRAMATURA 180GR (PACOTE COM 50FOLHAS)","saldo":17},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006498","material":"PAPEL TIPO SULFITE A4, 75G/M COR BRANCA (RESMA), COTA 20%","saldo":20},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006003","material":"PAPEL TIPO SULFITE,TAMANHO A3, GRAMATURA DE 75G/M², COR BRANCA, 500 FOLHAS (RESMA).","saldo":44.78},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006451","material":"PASTA CATÁLOGO OFICIO, COR PRETA, 4 COLCHETES, BOLSO E VISOR, 50 ENVELOPES.","saldo":9},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006331","material":"PASTA COM ABA E ELÁSTICO EM CARTÃO PRENSADO PLASTIFICADO, GRAMATURA 270 G/M2, TAMANHO MÍNIMO 235X325MM, AZUL, PRODUTO REGISTRADO NO INMETRO.","saldo":622},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006333","material":"PASTA COM ABA E ELÁSTICO EM CARTÃO PRENSADO PLASTIFICADO, VERMELHA.","saldo":50},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006335","material":"PASTA GRAMPO TRILHO PLÁSTICA, COR CRISTAL, TAMANHO MÍNIMO DE 240X340 MM,","saldo":90},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006004","material":"PASTA PLÁSTICA COM ABA E ELÁSTICO, FINA, COR CRISTAL, TAMANHO MÍNIMO DE 230 X 330MM.","saldo":50},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006442","material":"PASTA PLÁSTICA COM ABA E ELÁSTICO, FINA, COR FUMÊ, TAMANHO MÍNIMO DE 230 X 330MM.","saldo":13},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006178","material":"PASTA PLÁSTICA COM ABA E ELÁSTICO, LOMBADA 4CM, COR CRISTAL, TAMANHO MÍNIMO DE 230 X 330MM.","saldo":40},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005717","material":"PERCEVEJO LATONADO (CAIXA COM 100 UNIDADES).","saldo":19},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005886","material":"PERFURADOR DE PAPEL EM METAL, 02 FUROS, CAPACIDADE DE PERFURAR ATÉ 60 FOLHAS 75G/M².","saldo":14},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005897","material":"PINCEL MARCADOR PARA QUADRO BRANCO, NA COR AZUL.","saldo":54},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005882","material":"PINCEL MARCADOR PARA QUADRO BRANCO, NA COR PRETO.","saldo":219},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006142","material":"PINCEL MARCADOR PARA QUADRO BRANCO, NA COR VERMELHA","saldo":118},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006013","material":"PORTA-CLIPE MAGNÉTICO, MATERIAL ACRÍLICO, COR FUMÊ","saldo":17},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006393","material":"PRANCHETA PORTÁTIL, MATERIAL ACRÍLICO, COMPRIMENTO 340 MM, LARGURA 235 MM, ESPESSURA 2 MM, COR FUMÊ, CARACTERÍSTICAS ADICIONAIS COM PRENDEDOR DE METAL E CANTOS ARRENDONDADOS","saldo":20},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006273","material":"PRANCHETA PORTÁTIL, MATERIAL EUCATEX, COMPRIMENTO 360 MM, LARGURA 240 MM, ESPESSURA 3 MM, CARACTERÍSTICAS ADICIONAIS PRENDEDOR DE METAL","saldo":105},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006449","material":"PRENDEDOR DE PAPEL, CORPO EM METAL, PINTURA EPÓXI E PRESILHA EM AÇO INOXIDÁVEL. COR PRETO. TAMANHO: 32MM. EMBALAGEM COM 12 UNIDADES","saldo":16},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006450","material":"PRENDEDOR DE PAPEL, CORPO EM METAL, PINTURA EPÓXI E PRESILHA EM AÇO INOXIDÁVEL. COR PRETO. TAMANHO: 51MM. EMBALAGEM COM 12 UNIDADES","saldo":8},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006448","material":"PRENDEDOR DE PAPEL, PRESILHA EM AÇO INOXIDÁVEL. COR PRETO. TAMANHO: 19MM. EMBALAGEM COM 12 UNIDADES","saldo":7},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006447","material":"QUADRO DE AVISOS A4 EM ACRÍLICO TRANSPARENTE, COM FITA ADESIVA PARA FIXAÇÃO EM PAREDES OU PORTAS.","saldo":13},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006159","material":"REFIL DE TINTA PARA MARCADOR DE QUADRO AZUL. EMBALAGEM INDIVIDUAL LACRADA.","saldo":362},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006161","material":"REFIL DE TINTA PARA MARCADOR DE QUADRO PRETO. EMBALAGEM INDIVIDUAL LACRADA.","saldo":422.68},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006162","material":"REFIL DE TINTA PARA MARCADOR DE QUADRO VERMELHO. EMBALAGEM INDIVIDUAL LACRADA.","saldo":178},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005861","material":"RÉGUA EM POLIESTIRENO TRANSPARENTE DE 30 CM","saldo":65.7},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006017","material":"RÉGUA PLÁSTICA TRANSPARENTE, 30 CM.","saldo":26},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006151","material":"SOLUÇÃO LIMPADORA LÍQUIDO PARA LIMPEZA DE QUADRO BRANCO ACOMPANHADO DE PANO APROPRIADO PARA LIMPEZA, EMBALAGEM COM 100ML,","saldo":52},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006696","material":"TESOURA 21CM","saldo":16},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006390","material":"TESOURA COM PONTAS, TAMANHO MÉDIO","saldo":6},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000005845","material":"TESOURA MULTIUSO EM AÇO INOX, CABO DE POLIPROPILENO PRETO, MEDINDO NO MÍNIMO 21CM.","saldo":20},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006155","material":"TINTA PARA AUTOENTINTADO E CARIMBO, MÍNIMO DE 30ML, COR AZUL.","saldo":11},
+  {"grupo":"3016","descGrupo":"Material de expediente e papelaria","codigo":"3016000006153","material":"TINTA PARA AUTOENTINTADO E CARIMBO, MÍNIMO DE 30ML, COR PRETA.","saldo":6},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004062","material":"CARTUCHO DE TONER IMPRESSÃO LASER PRETO MLT-D203L","saldo":22},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004094","material":"CARTUCHO TONER PARA IMPRESSORA SAMSUNG MOD ML 3750ND, COR PRETA REF: MLT D305L, ORIGINAL","saldo":1},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004263","material":"CARTÃO DE MEMÓRIA TIPO SDHC DE 32GB;","saldo":3},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004372","material":"MEMÓRIA EM CARTÃO MAGNÉTICO, CAPACIDADE MEMÓRIA DE NO MÍNIMO 64 GB, TIPO CARTAO MEMORY CARD, USO CÂMERA FOTOGRÁFICA E FILMADORA, APLICAÇÃO ARMAZENAMENTO DE DADOS. IMPRESCINDÍVEL QUE SEJA COMPATÍVEL COM A CÂMERA FOTOGRÁFICA DIGITAL. TIPO FOCO: MANUAL E AUTOMÁTICO (ITENS 4 E 5).","saldo":1},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000002009","material":"MOUSE OPTICO USB 3 BOTÕES","saldo":62},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004436","material":"MOUSE PAD COM APOIO ERGONÔMICO","saldo":4},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004443","material":"MOUSE USB","saldo":4},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004367","material":"REFIL DE TINTA PARA MULTIFUNCIONAL EPSON L365/ L375/ L200/ L1300/ L395/ L396, REFERÊNCIA T664220AL CIANO, FRASCO COM NO MÍNIMO 70ML. ORIGINAL","saldo":8},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004366","material":"REFIL DE TINTA PARA MULTIFUNCIONAL EPSON L365/ L375/ L200/ L1300/ L395/ L396, REFERÊNCIA T664420AL AMARELO, FRASCO COM NO MÍNIMO 70ML. ORIGINAL.","saldo":14},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004202","material":"REFIL DE TINTA PARA MULTIFUNCIONAL EPSON MAGENTA - T664320AL","saldo":13},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004204","material":"REFIL DE TINTA PARA MULTIFUNCIONAL EPSON PRETO - T664120AL","saldo":6},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004399","material":"TECLADO PADRÃO: ABNT2 QWERTY; TECLAS: 107 (CENTO E SETE); INTERFACE: USB; FIO: SIM; APLICAÇÃO: MICROCOMPUTADOR; EMBALAGEM: 1 (UMA) UNIDADE; GARANTIA: 12 (DOZE) MESES.","saldo":2},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004164","material":"TECLADO PARA MICROCOMPUTADOR USB ABNT-II COM NO MÍNIMO 104 TECLAS","saldo":5},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004262","material":"TECLADO USB ABNT-II COM NO MÍNIMO 104 TECLAS,PLUG AND PLAY","saldo":25},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004438","material":"TECLADO USB LK-501","saldo":11},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004407","material":"TINTA COMPATÍVEL PARA IMPRESSORA EPSON ECOTANK L396. CARTUCHO DE TINTA AMARELA, MODELO DE REFERÊNCIA EPSON (T664120) ORIGINAL, NÃO RECONDICIONADO E NÃO RECICLADO: EMBALAGEM: GARRAFA VOLUME: 70 ML. GARANTIA: 90 DIAS OBS: ANTES DE REQUISITAR, ANALISAR A PROPOSTA DO FORNECEDOR","saldo":20},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004384","material":"TINTA COMPATÍVEL PARA IMPRESSORA EPSON ECOTANK L396. CARTUCHO DE TINTA CIANO, MODELO DE REFERÊNCIA EPSON (T664120) ORIGINAL, NÃO RECONDICIONADO E NÃO RECICLADO: EMBALAGEM: GARRAFA VOLUME: 70 ML. GARANTIA: 90 DIAS OBS: ANTES DE REQUISITAR, ANALISAR A PROPOSTA DO FORNECEDOR","saldo":20},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004386","material":"TINTA COMPATÍVEL PARA IMPRESSORA EPSON ECOTANK L396. CARTUCHO DE TINTA MAGENTA, MODELO DE REFERÊNCIA EPSON (T664120), NÃO RECONDICIONADO E NÃO RECICLADO: EMBALAGEM: GARRAFA VOLUME: 70 ML. GARANTIA: 90 DIAS OBS: ANTES DE REQUISITAR, ANALISAR A PROPOSTA DO FORNECEDOR","saldo":20},
+  {"grupo":"3017","descGrupo":"Informática, periféricos e suprimentos de impressão","codigo":"3017000004385","material":"TINTA COMPATÍVEL PARA IMPRESSORA EPSON ECOTANK L396. CARTUCHO DE TINTA PRETA, MODELO DE REFERÊNCIA EPSON (T664120) ORIGINAL/SIMILAR, , NÃO RECONDICIONADO E NÃO RECICLADO: EMBALAGEM: GARRAFA VOLUME: 70 ML. GARANTIA: 90 DIAS OBS: ANTES DE REQUISITAR, ANALISAR A PROPOSTA DO FORNECEDOR","saldo":20},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001313","material":"BOBINA DE PLÁSTICO FILME PVC. - MATERIAL: PVC - CLORETO DE POLIVINILA; - TIPO FILME: ESTICÁVEL","saldo":4},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001241","material":"CAIXA ORGANIZADORA PLÁSTICA COM TAMPA, MATERIAL POLIPROPILENO, TRANSPARENTE. CAPACIDADE MÍNIMA 30 LITROS","saldo":42},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001289","material":"FILME PLÁSTICO, LARGURA: 28 CM, APLICAÇÃO: USO EM ODONTOLOGIA, MATERIAL: PVC, COMPRIMENTO: 300 M","saldo":9},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001264","material":"PAPEL FILME DE PVC EM ROLO MEDINDO 28CM X 30M","saldo":382},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001308","material":"POTE DE PLÁSTICO DESCARTÁVEL COM TAMPA DE 250 ML (25 UNIDADES).","saldo":13},
+  {"grupo":"3019","descGrupo":"Materiais e recipientes plásticos","codigo":"3019000001284","material":"PULVERIZADOR/BORRIFADOR DE PLÁSTICO COM SPRAY 500ML","saldo":80},
+  {"grupo":"3020","descGrupo":"Guardanapos e materiais para alimentação","codigo":"3020000000251","material":"GUARDANAPO DE PAPEL, COR BRANCA","saldo":55},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001982","material":"UTENSÍLIOS DE COZINHA (CONJUNTO COM NO MÍNIMO 12 PEÇAS).","saldo":5},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001972","material":"CONJUNTO DE POTES DE AÇO INOXIDÁVEL COM TAMPA DE PLÁSTICO","saldo":5},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001835","material":"COPO DESCARTÁVEL 180 ML","saldo":1505},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001867","material":"COPO DESCARTÁVEL 50 ML, PACOTE COM 100 UNIDADES.","saldo":192},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001930","material":"COPO DESCARTÁVEL EM PLÁSTICO (PP), CAPACIDADE MÍNIMA PARA 180 ML, PACOTE COM 100 UNIDADES.","saldo":448},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001901","material":"FÓSFORO, PALITOS LONGOS, CAIXA COM 200 UNIDADES APROXIMADAS.","saldo":34},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001928","material":"FÓSFORO, PALITOS LONGOS, CAIXA COM 240 UNIDADES APROXIMADAS - MARCA REGISTRADA","saldo":132},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001932","material":"GUARDANAPO FOLHA SIMPLES (PACOTE COM 50 UNIDADES)","saldo":512},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001973","material":"KIT DE JOGO DE FACAS PARA QUEIJO.","saldo":1},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001934","material":"PAPEL ALUMÍNIO EM ROLO, LARGURA 45CM X COMPRIMENTO 7,5 M","saldo":140},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001879","material":"PAPEL FILME, MATERIAL PVC - CLORETO DE POLIVINILA, LARGURA 28CM, BOBINA COM 300M.","saldo":150},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001945","material":"POTE VIDRO, TRANSPARENTE, FORMATO CILÍNDRICO, DIÂMETRO MÍNIMO DE 10CM, CAPACIDADE 1 LITRO","saldo":1},
+  {"grupo":"3021","descGrupo":"Copa, cozinha e materiais para alimentação","codigo":"3021000001946","material":"RECIPIENTE ALIMENTOS, MATERIAL: AÇO INOXIDÁVEL, CAPACIDADE: 500 ML","saldo":4},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002025","material":"084 VASSOURA DE PIAÇAVA PEQUENA","saldo":11},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002193","material":"ACIDO MURIÁTICO – PRINCÍPIO ATIVO TEOR MÍNIMO DE 30% (COMERCIAL) EMBALAGEM PLÁSTICA COM 1,0 LITRO.","saldo":30},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002076","material":"DESINFETANTE EUCALIPTO (SANITIZANTE) - FRASCO 1 LITRO","saldo":135},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002098","material":"DESINFETANTE LAVANDA (SANITIZANTE) - FRASCO 1 LITRO","saldo":140},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002146","material":"DESINFETANTE PINHO (SANITIZANTE), FRASCO 500 ML.","saldo":120},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002159","material":"DESODORIZADOR (AROMATIZANTE) AMBIENTAL DE AR COM FRAGRÂNCIA, TIPO AEROSOL, ACONDICIONADO EM EMBALAGEM METÁLICA COM NO MÍNIMO 360ML","saldo":125},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002228","material":"DETERGENTE LÍQUIDO NEUTRO, (FRASCO 500 ML)","saldo":52},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002194","material":"DISPENSER DE PAPEL TOALHAS INTERFOLHADO.","saldo":13},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002075","material":"DISPENSER DE SOBREPOR PARA SABONETE LIQUIDO OU ÁLCOOL GEL EM PLÁSTICO RÍGIDO (ABS)","saldo":21},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002303","material":"DISPENSER PARA PAPEL HIGIÊNICO DE 300 A 400M, EM INOX, COM PORTA CADEADO E VISOR PARA CONTROLE DA SUBSTITUIÇÃO DO PAPEL.","saldo":8},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002010","material":"ESCOVA DE MÃO, OVAL, PARA LIMPEZA GERAL (TANQUE), TAMANHO MÍNIMO DE 6 X 12 CM","saldo":156},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002011","material":"ESCOVA DE MÃO, OVAL, PARA LIMPEZA GERAL (TANQUE), TAMANHO MÍNIMO DE 7 X 12 CM.","saldo":35},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002176","material":"ESCOVA PARA HIGIENIZAÇÃO DE VASO SANITÁRIO, COM SUPORTE (RECIPIENTE).","saldo":80},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002046","material":"ESPONJA DE LÃ DE AÇO FINA - LIMPEZA (PACOTE COM 8 UNIDADES)","saldo":37},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002014","material":"ESPONJA DUPLA-FACE PACOTE C/ 03 UNIDADES","saldo":1539},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002103","material":"FLANELA ALVEJADA PARA LIMPEZA GERAL NA COR LARANJA- DIMENSÕES MÍNIMAS DE 38X58CM","saldo":520},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002145","material":"FLANELA DE PANO EM ALGODÃO ALVEJADO NA COR LARANJA, COM DIMENSÕES MÍNIMAS DE 38 X 58 CM.","saldo":14},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002256","material":"LIMPADOR DE VIDROS LÍQUIDO, ACONDICIONADO EM EMBALAGEM PLÁSTICA DE 500 ML","saldo":268},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002415","material":"LIXEIRA PLÁSTICA RETANGULAR COM TAMPA ACIONADA POR PEDAL- 10 A 15 LITROS.","saldo":29},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002264","material":"LIXEIRA PLÁSTICA RETANGULAR COM TAMPA ACIONADA POR PEDAL- 30 LITROS","saldo":2},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002168","material":"LIXEIRA PLÁSTICA, TELADO, SEM TAMPA, CAPACIDADE APROXIMADA DE 10 LITROS.","saldo":54},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000001993","material":"LUSTRA-MÓVEIS LÍQUIDO CREMOSO, ACONDICIONADO EM EMBALAGEM PLÁSTICA RESISTENTE DE 200 ML","saldo":210},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002269","material":"PANO DE CHÃO CONFECCIONADO EM TECIDO DE ALGODÃO CRU","saldo":1000},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002115","material":"PAPEL HIGIÊNICO DE FOLHA DUPLA DE ALTA (PRIMEIRA) QUALIDADE, ROLOS DE 30 M X 10 CM (FARDO COM 64 ROLOS)","saldo":0.56},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002048","material":"PAPEL HIGIÊNICO DE FOLHA SIMPLES DE ALTA (PRIMEIRA) QUALIDADE, ROLOS DE 300 M X 10 CM. (PACOTE COM 08 ROLOS)","saldo":266},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002332","material":"PAPEL HIGIÊNICO PCT C/ 4 ROLOS DE 30 MT","saldo":4048},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002399","material":"PAPEL HIGIÊNICO, 300M X 10 CM","saldo":473},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002116","material":"PAPEL TOALHA DE FOLHA DUPLA INTERFOLHADA, COR BRANCA, (PACOTE CONTENDO 2.000 FOLHAS).","saldo":40},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002271","material":"PAPEL TOALHA DE FOLHA DUPLA INTERFOLHADA, COR BRANCA, PACOTE CONTENDO 2.000 FOLHAS","saldo":536},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002280","material":"PAPEL TOALHA INTERFOLHA LUXO 20 X 21 (FARDO COM 1000 FOLHAS)","saldo":50},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002073","material":"PAPEL TOALHA, TIPO FOLHA DUPLA CT - DEPARTAMENTO DE","saldo":506},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002183","material":"REPELENTE, PRINCÍPIO ATIVO À BASE DE DEET (FRASCO COM 100 ML)","saldo":25},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002086","material":"SABONETE LÍQUIDO CREMOSO (SACHE COM 800 ML)","saldo":617},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002055","material":"SABONETE LÍQUIDO CREMOSO, ANTISSÉPTICO, SACHE PLÁSTICO DE 800 ML.","saldo":474},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002061","material":"SABÃO DE COCO, EM BARRA NÃO- GLICERINADO E PERFUMADO (PACOTE COM 05 UNIDADES)","saldo":148},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002065","material":"SABÃO EM PÓ, CAIXA DE 1 KG","saldo":147},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000001985","material":"SACO PARA LIXO COM 40 LITROS","saldo":62},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002023","material":"SACO PARA LIXO COM 60 LITROS","saldo":48},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002126","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE PARA 40 LITROS, (PACOTE COM 100 UNIDADES);","saldo":96.05},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002189","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE PARA 60 LITROS. (PACOTE COM 100 UNIDADES);","saldo":59},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002030","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE VOLUMÉTRICA DE 100 LITROS, COR PRETA","saldo":283},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002204","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE VOLUMÉTRICA DE 15 LITROS, COR PRETA","saldo":76},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002032","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE VOLUMÉTRICA DE 30 LITROS","saldo":136},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002034","material":"SACO PLÁSTICO REFORÇADO PARA LIXO, CLASSE I, CAPACIDADE VOLUMÉTRICA DE 50 LITROS","saldo":153.05},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002272","material":"SODA CÁUSTICA - CONCENTRAÇÃO MÍNIMA DE PUREZA DE 95% - EMBALAGEM COM 1KG.","saldo":50},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002056","material":"SOLUÇÃO LIMPEZA MULTIUSO, 500ML","saldo":703},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002162","material":"VASSOURA DE PIAÇAVA DOMÉSTICA - EM FORMA DE LEQUE - COM COMPRIMENTO DA CEPA APROXIMADO DE 30CM","saldo":314},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002263","material":"VASSOURA DE PIAÇAVA DOMÉSTICA - EM FORMA DE LEQUE - COMPRIMENTO DA CEPA APROXIMADO DE 20CM","saldo":100},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002033","material":"VASSOURA, CERDAS DE NYLON.","saldo":15},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002420","material":"ÁLCOOL EM GEL (REFIL) PARA USO EM DISPENSER, 70%, EMBALAGEM COM 800ML. COTA APROXIMADA 20%","saldo":14},
+  {"grupo":"3022","descGrupo":"Materiais de limpeza, higiene e acondicionamento","codigo":"3022000002181","material":"ÓLEO ANTICORROSIVO (DESENGRIPANTE), ACONDICIONADO EM EMBALAGEM METÁLICA TIPO SPRAY AEROSSOL DE 300ML","saldo":1},
+  {"grupo":"3024","descGrupo":"Fitas adesivas e materiais de fixação","codigo":"3024000012865","material":"FITA ADESIVA CREPE 48MM X 50MM","saldo":1},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007167","material":"ADAPTADOR CONECTOR (HDMI/VGA) ENTRADA DE SINAL HDMI MACHO PARA SAÍDA DE SINAL VGA FÊMEA","saldo":7},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007442","material":"ADAPTADOR, QUANTIDADE PÓLOS:2 P + T","saldo":52},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007906","material":"BATERIA DE LÍTIO CR 2025","saldo":5},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007419","material":"BATERIA ELETRONICA DE LÍTIO, TIPO MOEDA, MODELO CR2032, VOLTAGEM 3V, CONFORME A RESOLUÇÃO CONAMA N.401 DE 04/11/2008. O PRODUTO DEVE APRESENTAR MARCA REGISTRADA.","saldo":190},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007232","material":"BATERIA SELADA DE CHUMBO ÁCIDO REGULADA POR VÁLVULAS (VRLA) TENSÃO NOMINAL DE 6V,","saldo":6},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000008022","material":"CABO HDMI.","saldo":6},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007242","material":"CABO PADRÃO HDMI 2.0 - 10 METROS","saldo":5},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006685","material":"FILTRO DE LINHA COM 3 TOMADAS","saldo":3},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006698","material":"FILTRO LINHA. APRESENTAR TENSÃO ALIMENTAÇÃO 127/240 V, APRESENTAR QUANTIDADE SAÍDA 6 TOMADAS TRIPOLAR COM LED","saldo":2},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006721","material":"PILHA AAA RECARREGÁVEIS. TIPO: PALITO; CARTELA COM 4 PILHAS RECARREGÁVEIS.","saldo":20},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000005222","material":"PILHA ALCALINA AA 1,5V EMBALAGEM COM 02 UNIDADES","saldo":9},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006572","material":"PILHA ALCALINA AAA PALITO 1,5V, EMBALAGEM COM 02 UNIDADES.","saldo":12},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006943","material":"PILHA ALCALINA AAA. TIPO: PALITO; APRESENTAR TENSÃO 1,5V; MODELO AAA; MÍNIMO DE QUANTITATIVO: CARTELA COM 4(QUATRO) UNIDADES","saldo":321},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000007508","material":"PILHAS AA RECARREGÁVEIS","saldo":10},
+  {"grupo":"3026","descGrupo":"Pilhas, baterias, cabos e acessórios elétricos","codigo":"3026000006720","material":"PILHAS AA RECARREGÁVEIS. BATERIA RECARREGÁVEL; CARTELA COM 4 PILHAS RECARREGÁVEIS","saldo":2},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001208","material":"LUVA DE SEGURANÇA. MALHA TRICOTADA DE FIBRAS NATURAIS E/OU SINTÉTICAS","saldo":40},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001058","material":"LUVA PARA LIMPEZA (MULTIUSO), CANO CURTO, TAMANHO MÉDIO","saldo":100},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001092","material":"LUVA PROTEÇÃO, TAMANHO ÚNICO, MATERIAL NOMEX/KEVLAR","saldo":2},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001122","material":"LUVA TÉRMICA CONFECCIONADA EM KEVLAR OU GRAFATEX DE FIBRA DE ARAMIDA OU EQUIVALENTE, COM PROTEÇÃO TÉRMICA DE NO MÍNIMO 250ºC. COMPRIMENTO MÍNIMO DE 40 CM. USO: LABORATÓRIO.","saldo":7},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001163","material":"MÁSCARA SEMI FACIAL COM NO MÍNIMO DUAS VÁLVULAS RESPIRATÓRIAS COM RESPIRADORES QUÍMICOS","saldo":6},
+  {"grupo":"3028","descGrupo":"Equipamentos e materiais de proteção individual","codigo":"3028000001187","material":"ÓCULOS DE PROTEÇÃO. MATERIAL DA ARMAÇÃO POLICARBONATO E NYLON.","saldo":430},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005860","material":"ALMOFARIZ, MATERIAL PORCELANA CT - DEPARTAMENTO DE","saldo":2},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000004833","material":"BALÃO DE 1000 ML VOLUMÉTRICO","saldo":10},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005490","material":"BALÃO LABORATÓRIO, TIPO FUNDO FUNDO REDONDO, MATERIAL VIDRO, CAPACIDADE 250, ADICIONAL COM 3 JUNTAS 24/40","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005216","material":"BALÃO LABORATÓRIO, TIPO USO VOLUMÉTRICO, FUNDO CHATO, MATERIAL VIDRO, CAPACIDADE 200 ML","saldo":14},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005218","material":"BALÃO LABORATÓRIO, TIPO USO VOLUMÉTRICO, FUNDO CHATO, MATERIAL VIDRO, CAPACIDADE 500 ML, ACESSÓRIOS ROLHA DE PLÁSTICO","saldo":22},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005501","material":"BASTÃO DE VIDRO 30CM X 6MM","saldo":2},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006464","material":"BURETA DE VIDRO 25 ML GRADUADA COM TORNEIRA EM TEFLON (PTFE)","saldo":10},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005283","material":"BURETA, MATERIAL: VIDRO, GRADUAÇÃO: GRADUADA, VOLUME: 25 ML","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005511","material":"BURETA, MATERIAL:VIDRO, GRADUAÇÃO:GRADUADA, VOLUME:10 ML, ESCALA:GRADUAÇÃO MÁXIMA 0,1 EM 0,1 ML,NUMERADA, ACESSÓRIOS:COM TORNEIRA DE TEFLON. COTAÇÃO REFERENTE A 1 UNID.","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006414","material":"BÉQUER, MATERIAL VIDRO, GRADUAÇÃO GRADUADO, CAPACIDADE 1000 ML, FORMATO FORMA ALTA, ADICIONAL COM ORLA E BICO. COTAÇÃO REFERENTE A 1 UNID.","saldo":1},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005600","material":"BÉQUER, MATERIAL VIDRO, GRADUAÇÃO GRADUADO, CAPACIDADE 1000 ML, FORMATO FORMA BAIXA, ADICIONAL COM ORLA E BICO. COTAÇÃO REFERENTE A 1 UNID.","saldo":5},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005647","material":"BÉQUER, VIDRO, 250 ML - MATERIAL VIDRO","saldo":35},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005540","material":"BÉQUER, VIDRO, GRADUADO, 600 ML, FORMA BAIXA, COM ORLA E","saldo":2},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006077","material":"CAIXA DE LÂMINAS PARA O LABORATÓRIO, POLIPROPILENO","saldo":13},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005862","material":"CALDO CÉREBRO CORAÇÃO NUPPA - LABORATÓRIO DE MICROBIOLOGIA","saldo":14},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006262","material":"CUBETA LABORATORIO VOLUME 3,5 ML","saldo":4},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000004831","material":"ERLENMEYER DE 250 ML","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006266","material":"ESPÁTULA COM COLHER EM CHAPA DE AÇO INOX TIPO 304; COMPRIMENTO 17CM","saldo":15},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005583","material":"ESPÁTULA LABORATÓRIO, MATERIAL AÇO INOX, FORMATO CANALETA, COMPRIMENTO CERCA DE 15 CM. COTAÇÃO REFERENTE A 1 UNID.","saldo":7},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000004854","material":"ESTANTE PARA 40 TUBOS DE ENSAIO DE 21 MM","saldo":1},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005604","material":"GRAL, MATERIAL PORCELANA, CAPACIDADE CERCA DE 200 ML, ACESSÓRIOS COM PISTILO DE PORCELANA. COTAÇÃO REFERENTE A 1 UNID.","saldo":5},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000004993","material":"PAPEL FILTRO QUALITATIVA. 80G DIAM. 12,5CM, EMBALAGEM COM 100 UND","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006438","material":"PAPEL MEDIDOR DE PH EM TIRAR.","saldo":14},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005918","material":"PICNÔMETRO, MATERIAL VIDRO, CAPACIDADE 10 ML, CALIBRAGEM CALIBRADO.","saldo":1},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000004979","material":"PINÇA CIRÚRGICA, AÇO INOXIDÁVEL, DISSECÇÃO, COM VÍDEA, 14 CM, ANATÔMICA.","saldo":8},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005168","material":"PIPETA PASTEUR; MATERIAL: VIDRO; TAMANHO: 23CM CAPACIDADE: 3ML","saldo":5},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005167","material":"PIPETA, TIPO SOROLÓGICA, GRADUADA, CAPACIDADE 50 ML, ESCALA 0,1 EM 0,1 ML, ESGOTAMENTO TOTAL","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005785","material":"PIPETA, TIPO VOLUMÉTRICA, CAPACIDADE 100 ML, ESGOTAMENTO TOTAL","saldo":2},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005949","material":"PIPETADOR, MATERIAL BORRACHA, CAPACIDADE ATÉ 3, ML AJUSTE TIPO BULBO PARA PIPETA PASTEUR. COTAÇÃO REFERENTE A 1 UNID.","saldo":5},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005188","material":"PLACA DE PETRI - PLACA DE VIDRO PARA CULTIVO E CRESCIMENTO DE MICRORGANISMOS. FABRICADA EM VIDRO NEUTRO OU BOROSSILICATO 3.3 TRANSPARENTE AUTOCLAVÁVEL (15 MIN, 121°C) REUTILIZÁVEL ESPESSURA: 1,0 A 1,2 MM. PACOTE COM 20 UNIDADES. DIMENSÕES: CERCA DE 15 X 80 MM.","saldo":21},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005852","material":"PLACA DE PETRI MATERIAL: PLÁSTICO, FORMATO: REDONDA, DIMENSÕES: CERCA DE 15 X 90 MM, ESTERILIDADE: ESTÉRIL, TIPO USO: DESCARTÁVEL.","saldo":920},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006338","material":"PLACA DE PETRI, MATERIAL VIDRO, FORMATO REDONDA, DIMENSÕES CERCA DE 15 X 100. COTAÇÃO REFERENTE A 1 UNID.","saldo":6},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006286","material":"PLACA DE PETRI, MATERIAL: VIDRO, FORMATO: REDONDA, DIMENSÕES: CERCA DE 20 X 90 MM. COTAÇÃO REFERENTE A 1 UNID.","saldo":2},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005485","material":"PROVETA DE VIDRO COM BASE DE POLIETILENO 25 ML","saldo":3},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005534","material":"PROVETA, MATERIAL POLIPROPILENO, GRADUAÇÃO GRADUADA, CAPACIDADE 100, BASE PLÁSTICA, ADICIONAL COM ORLA E BICO. COTAÇÃO REFERENTE A 1 UNID.","saldo":37},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005206","material":"PROVETA, MATERIAL VIDRO, GRADUAÇÃO GRADUADA, CAPACIDADE 250 ML, BASE EM VIDRO, ADICIONAL COM ORLA E BICO.","saldo":12},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005200","material":"PROVETA, MATERIAL VIDRO, GRADUAÇÃO GRADUADA, CAPACIDADE 500 ML, BASE PLÁSTICA, ADICIONAL COM ORLA E BICO.","saldo":14},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005221","material":"PROVETA, MATERIAL: VIDRO, GRADUAÇÃO: GRADUADA CAPACIDADE: 100 ML, BASE: BASE EM VIDRO, ADICIONAL: COM ORLA E BICO. COTAÇÃO REFERENTE A 1 UNID.","saldo":7},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000005205","material":"PROVETA, MATERIAL: VIDRO, GRADUAÇÃO: GRADUADA, CAPACIDADE: 50 ML, BASE: BASE PLÁSTICA, ADICIONAL: COM ORLA E BICO.","saldo":18},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006385","material":"QUITOSANA. COMPOSTO QUÍMICO, CONCENTRAÇÃO:75-85% DEACETILADA. SOLICITAR MÚLTIPLOS DE 250G, UMA VEZ QUE R$8,45 CORRESPONDE AO VALOR DE 1 GRAMA.","saldo":5},
+  {"grupo":"3035","descGrupo":"Materiais e vidrarias para laboratório","codigo":"3035000006335","material":"RECIPIENTE LABORATÓRIO, APLICAÇÃO:PARA ANAEROBIOSE, TIPO:JARRA, MATERIAL:PLÁSTICO, CAPACIDADE: 3,5 L.","saldo":2},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000004485","material":"ALGODÃO, HIDRÓFILO, EMBALAGEM INDIVIDUAL 500G","saldo":19},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009139","material":"COLETOR DE MATERIAL PERFURO- CORTANTE,1,5 LITROS, ALÇA DUPLA PARA TRANSPORTE, CONTRA-TRAVA DE SEGURANÇA.","saldo":24},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009498","material":"DETERGENTE ENZIMÁTICO, COMPOSIÇÃO: A BASE DE AMILASE, PROTEASE, LIPASE E CARBOIDRASE, COMPOSIÇÃO II: MANANASE, CELULASE E PEPTIDASE.","saldo":7},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009222","material":"FITA ADESIVA CREPE 18MMX50M, ROLO COM 3M","saldo":97},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009160","material":"LUVA DE LÁTEX PARA PROCEDIMENTOS, NÃO ESTÉRIL, AMBIDESTRO, LEVEMENTE TALCADA, HIPOALÉRGICA, TAMANHO G, CAIXA COM 100 UNIDADES.","saldo":10},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000010197","material":"LUVA PARA PROCEDIMENTO NÃO CIRÚRGICO, TAMANHO MÉDIO, EM LÁTEX NATURAL, SEM PÓ","saldo":5},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000010194","material":"LUVA PROCEDIMENTO PLÁSTICA, TAMANHO ÚNICO, TIPO USO: DESCARTÁVEL, MODELO: AMBIDESTRA.","saldo":2},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009231","material":"SACO PLÁSTICO LIXO, 50 L, COR BRANCO LEITOSO, SIMBOLOGIA DE SUBSTÂNCIA INFECTANTE, COM 100 UNIDADES.","saldo":2},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000008970","material":"TOUCA HOSPITALAR, CAIXA COM 100 UNIDADES.","saldo":41},
+  {"grupo":"3036","descGrupo":"Materiais hospitalares, EPIs e insumos de saúde","codigo":"3036000009220","material":"ÁLCOOL ETÍLICO HIDRATADO A 96%, EMBALAGEM EM FRASCO COM 1L.","saldo":180},
+  {"grupo":"3040","descGrupo":"Meios de cultura e insumos microbiológicos","codigo":"3040000003101","material":"MEIO DE CULTURA CALDO BILE VERDE BRILHANTE, ASPECTO FÍSICO PÓ. VALIDADE MÍNIMA DE 1 ANO. FRASCO COM 500 GRAMAS.","saldo":7},
+  {"grupo":"3040","descGrupo":"Meios de cultura e insumos microbiológicos","codigo":"3040000003112","material":"MEIO DE CULTURA CALDO MUELLER HINTON, ASPECTO FÍSICO: PÓ. VALIDADE MÍNIMA DE 1 ANO. FRASCO COM 500 GRAMAS.","saldo":44},
+  {"grupo":"3040","descGrupo":"Meios de cultura e insumos microbiológicos","codigo":"3040000003173","material":"MEIO DE CULTURA, TIPO:MRS ÁGAR, APRESENTAÇÃO:PÓ. FRASCO COM 500G.","saldo":1},
+  {"grupo":"3040","descGrupo":"Meios de cultura e insumos microbiológicos","codigo":"3040000003117","material":"ÁGAR SS (SALMONELLA SHIGELLA) NUPPA - LABORATÓRIO DE","saldo":12},
+  {"grupo":"3044","descGrupo":"Fitas para demarcação","codigo":"3044000000036","material":"FITA ADESIVA PARA DEMARCAÇÃO DE SOLO","saldo":27},
+  {"grupo":"5230","descGrupo":"Baterias e sistemas de energia","codigo":"5230000000700","material":"BATERIA DE 10KVA INCLUINDO RACK. (BATERIA COM RACK E LIGAÇÕES INTERNAS INCLUSAS- BANCO DE BATERIAS)","saldo":26}
+];
+
+/* ============================================================
+   MÓDULO API — INTEGRAÇÃO PRESERVADA INTEGRALMENTE
+   ============================================================ */
+const API = (() => {
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzHquUmtGZqepBtwrarVSv9rIPrZhAunnZfZgEypdJ1X8IRQuzpp0QOV1LzJeYhvF71rQ/exec";
+
+  const MATERIAIS_FALLBACK = window.__MATERIAIS_FALLBACK__ || [];
+
+  const DEPARTAMENTOS = [
+    "Direção do Centro de Tecnologia - CT",
+    "Departamento de Arquitetura e Urbanismo - DAU",
+    "Departamento de Engenharia de Alimentos - DEA",
+    "Departamento de Engenharia de Materiais - DEMAT",
+    "Departamento de Engenharia de Produção - DEP",
+    "Departamento de Engenharia Civil e Ambiental - DECA",
+    "Departamento de Engenharia Mecânica - DEM",
+    "Departamento de Engenharia Química - DEQ"
+  ];
+
+  let _materiaisCache = null;
+  let _fonte = "desconhecida";
+
+  async function carregarMateriais() {
+    if (_materiaisCache) return _materiaisCache;
+    try {
+      const url = ENDPOINT + (ENDPOINT.includes("?") ? "&" : "?") + "action=materiais";
+      const resp = await fetch(url, { method: "GET", redirect: "follow" });
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      const json = await resp.json();
+      const lista = Array.isArray(json) ? json
+                   : Array.isArray(json.materiais) ? json.materiais
+                   : Array.isArray(json.data) ? json.data
+                   : null;
+      if (!lista || !lista.length) throw new Error("API retornou vazio");
+      _materiaisCache = lista.map(normalizar).filter(m => m.codigo);
+      _fonte = "api";
+    } catch (e) {
+      console.warn("[API] Falha ao consultar endpoint, usando fallback local:", e.message);
+      _materiaisCache = MATERIAIS_FALLBACK.map(normalizar);
+      _fonte = "fallback";
+    }
+    return _materiaisCache;
+  }
+
+  function normalizar(m) {
+    return {
+      grupo: String(m.grupo ?? m.GRUPO ?? m["GRUPO"] ?? "").trim(),
+      descGrupo: String(m.descGrupo ?? m["DESCRIÇÃO DO GRUPO"] ?? m["DESCRICAO_DO_GRUPO"] ?? m.descricao_grupo ?? "").trim(),
+      codigo: String(m.codigo ?? m["CÓDIGO"] ?? m["CODIGO"] ?? m.codigo_material ?? "").trim(),
+      material: String(m.material ?? m["MATERIAL"] ?? m.descricao ?? "").trim(),
+      saldo: Number(m.saldo ?? m["SALDO_ESTOQUE_ATUAL"] ?? m.saldo_estoque ?? 0) || 0
+    };
+  }
+
+  function getDepartamentos() { return DEPARTAMENTOS.slice(); }
+  function getFonte() { return _fonte; }
+
+  async function enviarDemanda(payload) {
+    try {
+      const resp = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        redirect: "follow"
+      });
+      const text = await resp.text();
+      let json;
+      try { json = JSON.parse(text); } catch (e) { json = { ok: resp.ok }; }
+      if (json && json.ok === false) throw new Error(json.erro || "Erro no backend");
+      salvarLocal(payload);
+      return { ok: true, id: json.id_demanda || payload.id_demanda, fonte: "api" };
+    } catch (e) {
+      console.warn("[API] Envio via rede falhou, registrando localmente:", e.message);
+      salvarLocal(payload);
+      return { ok: true, id: payload.id_demanda, fonte: "local" };
+    }
+  }
+
+  function salvarLocal(payload) {
+    try {
+      const store = JSON.parse(localStorage.getItem("ct_demandas_local") || "[]");
+      if (!store.find(d => d.id_demanda === payload.id_demanda)) {
+        store.push(payload);
+        localStorage.setItem("ct_demandas_local", JSON.stringify(store));
+      }
+    } catch(e) {}
+  }
+
+  async function buscarDemandas() {
+    try {
+      const url = ENDPOINT + (ENDPOINT.includes("?") ? "&" : "?") + "action=demandas";
+      const r = await fetch(url, { redirect:"follow" });
+      if (r.ok) {
+        const j = await r.json();
+        const lista = Array.isArray(j) ? j : j.demandas || j.data || [];
+        if (lista.length) return lista;
+      }
+    } catch(e) {}
+    return JSON.parse(localStorage.getItem("ct_demandas_local") || "[]");
+  }
+
+  return { carregarMateriais, getDepartamentos, getFonte, enviarDemanda, buscarDemandas, ENDPOINT };
+})();
+
+/* ============================================================
+   MÓDULO DOWNLOAD — PDF E PLANILHA
+   ============================================================ */
+const Download = (() => {
+
+  function _obterDemanda() {
+    if (State.ultimaDemanda) return State.ultimaDemanda;
+    try {
+      const store = JSON.parse(localStorage.getItem("ct_demandas_local") || "[]");
+      if (store.length) return store[store.length - 1];
+    } catch(e) {}
+    return null;
+  }
+
+  function baixarPDF() {
+    const d = _obterDemanda();
+    if (!d) { Util.toast("Nenhuma demanda disponível para download.", "erro"); return; }
+
+    const w = window.open("", "_blank");
+    if (!w) { Util.toast("Permita pop-ups para baixar o PDF.", "erro"); return; }
+
+    const itens = d.itens || [];
+    const totalUnid = itens.reduce((s,i) => s + (Number(i.qtd) || 0), 0);
+
+    w.document.write(`
+      <html><head><meta charset="utf-8">
+      <title>Cópia da Demanda ${Util.esc(d.id_demanda)}</title>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Inter',Arial,sans-serif;padding:36px 40px;color:#1a2332;font-size:12.5px;line-height:1.5}
+        /* Faixa escura institucional para a logo branca */
+        .faixa-logo{
+          background:linear-gradient(135deg,#0b3d6b,#062a4d);
+          border-radius:12px;
+          padding:22px 24px;
+          text-align:center;
+          margin-bottom:24px;
+        }
+        .faixa-logo .logo{
+          width:130px;height:130px;
+          object-fit:contain;
+          margin:0 auto;
+          display:block;
+        }
+        .header{text-align:center;margin-bottom:22px;padding-bottom:16px;border-bottom:2.5px solid #0b3d6b}
+        .header h1{color:#0b3d6b;font-size:20px;margin-bottom:4px;letter-spacing:-.3px}
+        .header .inst{color:#5a6577;font-size:12px}
+        .titulo-copia{text-align:center;margin:22px 0 8px;font-size:15px;font-weight:700;color:#0b3d6b;text-transform:uppercase;letter-spacing:1px}
+        .id-box{text-align:center;margin:14px auto 26px;max-width:380px;padding:12px 20px;background:#e8f1f9;border:1.5px dashed #1565a8;border-radius:10px;font-family:monospace;font-size:17px;font-weight:700;color:#0b3d6b;letter-spacing:1.5px}
+        .secao{margin-bottom:22px}
+        .secao h3{font-size:11px;color:#0b3d6b;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1.5px solid #dde3ea;font-weight:700}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+        .grid .item{font-size:12.5px}
+        .grid .k{color:#5a6577;font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:2px}
+        .grid .v{color:#1a2332;font-weight:600}
+        table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
+        th{background:#e8f1f9;color:#0b3d6b;text-align:left;padding:8px 10px;border:1px solid #dde3ea;font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.4px}
+        td{padding:7px 10px;border:1px solid #eef1f5;vertical-align:top}
+        .num{text-align:right;font-variant-numeric:tabular-nums}
+        tfoot td{background:#e8f1f9;font-weight:700}
+        .rodape{margin-top:32px;padding-top:14px;border-top:1.5px solid #dde3ea;text-align:center;color:#5a6577;font-size:10.5px;line-height:1.7}
+        .rodape strong{color:#0b3d6b}
+        @media print{body{padding:20px}}
+      </style></head><body>
+
+      <!-- Faixa escura com a logo branca em destaque -->
+      <div class="faixa-logo">
+        <img class="logo" src="https://res.cloudinary.com/dqmuoc3o0/image/upload/v1791304718/Logo_CT_Centro_de_Tecnologia_UFPB_1_dumhgk.png" alt="CT — Centro de Tecnologia UFPB" onerror="this.style.display='none'">
+      </div>
+
+      <div class="header">
+        <h1>Centro de Tecnologia — UFPB</h1>
+        <div class="inst">Sistema de Levantamento Semestral de Demanda de Materiais</div>
+      </div>
+
+      <div class="titulo-copia">Cópia da Demanda</div>
+      <div class="id-box">${Util.esc(d.id_demanda || "—")}</div>
+
+      <div class="secao">
+        <h3>Dados da Solicitação</h3>
+        <div class="grid">
+          <div class="item"><div class="k">Data/Hora</div><div class="v">${Util.esc(d.data_hora_envio || "—")}</div></div>
+          <div class="item"><div class="k">Semestre</div><div class="v">${Util.esc(d.semestre_demanda || "—")}</div></div>
+          <div class="item"><div class="k">Departamento</div><div class="v">${Util.esc(d.departamento || "—")}</div></div>
+          <div class="item"><div class="k">Setor Demandante</div><div class="v">${Util.esc(d.setor_demandante || "—")}</div></div>
+          <div class="item"><div class="k">Responsável</div><div class="v">${Util.esc(d.responsavel_administrativo_ou_tecnico || "—")}</div></div>
+          <div class="item"><div class="k">Chefia</div><div class="v">${Util.esc(d.chefia_do_setor || "—")}</div></div>
+          <div class="item"><div class="k">WhatsApp/Telefone</div><div class="v">${Util.esc(d.whatsapp_telefone || "—")}</div></div>
+          <div class="item"><div class="k">E-mail</div><div class="v">${Util.esc(d.email_setor_ou_responsavel || "—")}</div></div>
+          <div class="item"><div class="k">Matrícula</div><div class="v">${Util.esc(d.matricula_responsavel || "—")}</div></div>
+          <div class="item"><div class="k">Status</div><div class="v">${Util.esc(d.status || "—")}</div></div>
+        </div>
+        ${d.observacao ? `<div style="margin-top:12px"><div class="k">Observação</div><div class="v" style="font-weight:400">${Util.esc(d.observacao)}</div></div>` : ""}
+      </div>
+
+      <div class="secao">
+        <h3>Materiais Solicitados (${itens.length} itens)</h3>
+        <table>
+          <thead><tr>
+            <th>Grupo</th><th>Material</th><th>Código</th>
+            <th class="num">Saldo</th><th class="num">Qtd.</th>
+          </tr></thead>
+          <tbody>
+            ${itens.map(i => `<tr>
+              <td>${Util.esc(i.descGrupo || i.grupo || "—")}</td>
+              <td>${Util.esc(i.material || "—")}</td>
+              <td style="font-family:monospace;font-size:10.5px">${Util.esc(i.codigo || "—")}</td>
+              <td class="num">${Util.fmtNum(i.saldoBase)}</td>
+              <td class="num"><strong>${Util.fmtNum(i.qtd)}</strong></td>
+            </tr>`).join("")}
+          </tbody>
+          <tfoot><tr>
+            <td colspan="4" class="num">TOTAL DE UNIDADES</td>
+            <td class="num">${Util.fmtNum(totalUnid)}</td>
+          </tr></tfoot>
+        </table>
+      </div>
+
+      <div class="rodape">
+        Documento gerado automaticamente pelo <strong>Sistema de Levantamento Semestral de Demanda de Materiais — CT/UFPB</strong>.<br>
+        Esta demanda é uma <strong>previsão semestral</strong> e não representa baixa imediata de estoque.<br>
+        Cópia gerada em ${Util.esc(Util.agora())}.
+      </div>
+
+      </body></html>`);
+    w.document.close();
+
+    setTimeout(() => {
+      try { w.focus(); w.print(); } catch(e) {}
+    }, 700);
+
+    Util.toast("📄 PDF gerado. Escolha 'Salvar como PDF' na janela de impressão.", "ok");
+  }
+
+  function baixarXLSX() {
+    const d = _obterDemanda();
+    if (!d) { Util.toast("Nenhuma demanda disponível para download.", "erro"); return; }
+
+    const itens = d.itens || [];
+    const totalUnid = itens.reduce((s,i) => s + (Number(i.qtd) || 0), 0);
+
+    const linhasCabecalho = [
+      ["Cópia da Demanda — Centro de Tecnologia / UFPB"],
+      ["Sistema de Levantamento Semestral de Demanda de Materiais"],
+      [],
+      ["ID da Demanda", d.id_demanda || "—"],
+      ["Data/Hora", d.data_hora_envio || "—"],
+      ["Semestre", d.semestre_demanda || "—"],
+      ["Departamento", d.departamento || "—"],
+      ["Setor Demandante", d.setor_demandante || "—"],
+      ["Responsável", d.responsavel_administrativo_ou_tecnico || "—"],
+      ["Chefia", d.chefia_do_setor || "—"],
+      ["WhatsApp/Telefone", d.whatsapp_telefone || "—"],
+      ["E-mail", d.email_setor_ou_responsavel || "—"],
+      ["Matrícula", d.matricula_responsavel || "—"],
+      ["Status", d.status || "—"],
+      ["Observação", d.observacao || "—"],
+      [],
+      ["Materiais Solicitados"],
+      ["Grupo", "Material", "Código", "Saldo", "Quantidade"]
+    ];
+
+    const linhasItens = itens.map(i => [
+      i.descGrupo || i.grupo || "—",
+      i.material || "—",
+      i.codigo || "—",
+      Number(i.saldoBase) || 0,
+      Number(i.qtd) || 0
+    ]);
+
+    const linhasRodape = [
+      [],
+      ["", "", "", "TOTAL DE UNIDADES", totalUnid],
+      [],
+      ["Cópia gerada em " + Util.agora() + " pelo Sistema de Levantamento Semestral de Demanda — CT/UFPB"]
+    ];
+
+    const todasLinhas = [...linhasCabecalho, ...linhasItens, ...linhasRodape];
+
+    let html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8">
+      <style>
+        table{border-collapse:collapse;font-family:Arial,sans-serif;font-size:11pt}
+        td,th{border:1px solid #b0c4de;padding:6px 10px;vertical-align:top}
+        th{background:#0b3d6b;color:#fff;font-weight:bold;text-align:center}
+        .titulo{font-size:14pt;font-weight:bold;color:#0b3d6b}
+        .subtitulo{font-size:10pt;color:#5a6577}
+        .secao{font-size:11pt;font-weight:bold;background:#e8f1f9;color:#0b3d6b}
+        .total{font-weight:bold;background:#e8f1f9}
+        .num{text-align:right}
+        .id{font-weight:bold;color:#0b3d6b;font-size:12pt}
+      </style></head><body><table>`;
+
+    todasLinhas.forEach((linha, idx) => {
+      if (idx === 0) {
+        html += `<tr><td colspan="5" class="titulo">${_esc(linha[0])}</td></tr>`;
+        return;
+      }
+      if (idx === 1) {
+        html += `<tr><td colspan="5" class="subtitulo">${_esc(linha[0])}</td></tr>`;
+        return;
+      }
+      if (idx === 16) {
+        html += `<tr><td colspan="5" class="secao">${_esc(linha[0])}</td></tr>`;
+        return;
+      }
+      if (idx === 17) {
+        html += `<tr>${linha.map(c => `<th>${_esc(c)}</th>`).join("")}</tr>`;
+        return;
+      }
+      if (!linha.length || linha.every(c => c === "" || c === undefined)) {
+        html += `<tr><td colspan="5" style="border:none">&nbsp;</td></tr>`;
+        return;
+      }
+      if (linha[0] === "" && linha[3] === "TOTAL DE UNIDADES") {
+        html += `<tr><td class="total"></td><td class="total"></td><td class="total"></td><td class="total" style="text-align:right">${_esc(linha[3])}</td><td class="total num">${linha[4]}</td></tr>`;
+        return;
+      }
+      if (linha.length === 1) {
+        html += `<tr><td colspan="5" style="border:none;font-size:9pt;color:#5a6577">${_esc(linha[0])}</td></tr>`;
+        return;
+      }
+      if (idx >= 3 && idx <= 14) {
+        html += `<tr><td style="background:#f4f6f9;font-weight:bold;width:180px">${_esc(linha[0])}</td><td colspan="4">${_esc(linha[1])}</td></tr>`;
+        return;
+      }
+      html += `<tr>${linha.map((c, ci) => {
+        const val = c === undefined || c === null ? "" : c;
+        const cls = (ci >= 3) ? ' class="num"' : "";
+        return `<td${cls}>${_esc(val)}</td>`;
+      }).join("")}</tr>`;
+    });
+
+    html += `</table></body></html>`;
+
+    function _esc(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+    }
+
+    const blob = new Blob(["\uFEFF" + html], { type: "application/vnd.ms-excel;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `copia_demanda_${(d.id_demanda || "sem-id").replace(/[^a-zA-Z0-9\-]/g, "_")}.xls`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+
+    Util.toast("📊 Planilha gerada e baixada com sucesso.", "ok");
+  }
+
+  return { baixarPDF, baixarXLSX };
+})();
+
+/* ============================================================
+   MÓDULO RASCUNHOS
+   ============================================================ */
+const Rascunhos = (() => {
+  const STORAGE_KEY = "ct_rascunhos_local";
+  let _editandoId = null;
+
+  function _gerarId() {
+    const ano = new Date().getFullYear();
+    let seq = 1;
+    try {
+      const lista = listar();
+      const idsAno = lista.map(r => r.id).filter(id => id && id.startsWith(`RASC-${ano}-`));
+      if (idsAno.length) {
+        const nums = idsAno.map(id => parseInt(id.split("-")[2], 10)).filter(n => !isNaN(n));
+        seq = (nums.length ? Math.max(...nums) : 0) + 1;
+      }
+    } catch(e) { seq = 1; }
+    return `RASC-${ano}-${String(seq).padStart(4, "0")}`;
+  }
+
+  function listar() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+    catch(e) { return []; }
+  }
+
+  function _persistir(lista) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(lista)); }
+    catch(e) { Util.toast("Erro ao salvar rascunho no dispositivo.", "erro"); }
+  }
+
+  function salvar() {
+    Demanda.coletarDadosFormulario();
+    const d = State.dados;
+    const temConteudo = d.departamento || d.setor || d.semestre || d.responsavel ||
+                       d.chefia || d.telefone || d.email || d.matricula || d.observacao ||
+                       State.carrinho.length > 0;
+    if (!temConteudo) {
+      Util.toast("Preencha ao menos um campo antes de gravar o pedido.", "erro");
+      return;
+    }
+    const lista = listar();
+    const agora = Util.agora();
+    if (_editandoId) {
+      const idx = lista.findIndex(r => r.id === _editandoId);
+      if (idx >= 0) {
+        lista[idx] = {
+          ...lista[idx],
+          dados: { ...d },
+          carrinho: State.carrinho.map(i => ({ ...i })),
+          etapaAtual: State.etapaAtual,
+          atualizadoEm: agora
+        };
+        _persistir(lista);
+        Util.toast("✓ Pedido atualizado com sucesso.", "ok");
+        _mostrarIndicadorSalvo();
+        MeusPedidos.render();
+        return _editandoId;
+      }
+    }
+    const id = _gerarId();
+    const novo = {
+      id, criadoEm: agora, atualizadoEm: agora,
+      etapaAtual: State.etapaAtual,
+      dados: { ...d },
+      carrinho: State.carrinho.map(i => ({ ...i }))
+    };
+    lista.push(novo);
+    _persistir(lista);
+    _editandoId = id;
+    State.rascunhoIdAtual = id;
+    _mostrarIndicadorEdicao(id);
+    Util.toast(`✓ Pedido ${id} salvo com sucesso.`, "ok");
+    _mostrarIndicadorSalvo();
+    MeusPedidos.render();
+    return id;
+  }
+
+  function salvarManual() { salvar(); }
+
+  function carregar(id) {
+    const lista = listar();
+    const r = lista.find(x => x.id === id);
+    if (!r) { Util.toast("Rascunho não encontrado.", "erro"); return false; }
+    _editandoId = id;
+    State.rascunhoIdAtual = id;
+    State.dados = { ...r.dados };
+    State.carrinho = (r.carrinho || []).map(i => ({ ...i }));
+    State.etapaAtual = r.etapaAtual || 1;
+    _preencherFormulario(r.dados);
+    App.setEtapa(State.etapaAtual);
+    Demanda.renderCarrinho();
+    _mostrarIndicadorEdicao(id);
+    App.go("demanda");
+    Util.toast(`Rascunho ${id} restaurado. Continue de onde parou.`, "ok");
+    return true;
+  }
+
+  function _preencherFormulario(d) {
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ""; };
+    set("sel-departamento", d.departamento);
+    set("inp-setor-manual", d.setor);
+    set("sel-semestre", d.semestre);
+    set("inp-responsavel", d.responsavel);
+    set("inp-chefia", d.chefia);
+    set("inp-telefone", d.telefone);
+    set("inp-email", d.email);
+    set("inp-matricula", d.matricula);
+    set("inp-observacao", d.observacao);
+    const chk = document.getElementById("chk-mesma-pessoa");
+    if (chk) chk.checked = !!(d.responsavel && d.chefia && d.responsavel === d.chefia);
+  }
+
+  function excluir(id) {
+    Modal.confirmar(
+      "Excluir pedido salvo",
+      "Deseja realmente excluir este pedido salvo? Esta ação não poderá ser desfeita.",
+      () => {
+        const lista = listar().filter(r => r.id !== id);
+        _persistir(lista);
+        if (_editandoId === id) {
+          _editandoId = null;
+          State.rascunhoIdAtual = null;
+          _esconderIndicadores();
+        }
+        Util.toast("🗑️ Pedido excluído.", "ok");
+        MeusPedidos.render();
+      }
+    );
+  }
+
+  function _mostrarIndicadorEdicao(id) {
+    const el = document.getElementById("rascunho-indicator");
+    const label = document.getElementById("rascunho-id-label");
+    if (el && label) { label.textContent = id; el.style.display = "block"; }
+  }
+
+  function _esconderIndicadores() {
+    const el = document.getElementById("rascunho-indicator");
+    if (el) el.style.display = "none";
+  }
+
+  function _mostrarIndicadorSalvo() {
+    let ind = document.getElementById("salvo-indicator");
+    if (!ind) {
+      ind = document.createElement("div");
+      ind.id = "salvo-indicator";
+      ind.className = "salvo-indicator";
+      ind.innerHTML = '<svg class="ico-svg sm"><use href="#i-check"/></svg> Pedido salvo';
+      const header = document.querySelector(".topbar-inner");
+      if (header) header.appendChild(ind);
+    }
+    ind.classList.add("show");
+    clearTimeout(ind._t);
+    ind._t = setTimeout(() => ind.classList.remove("show"), 2500);
+  }
+
+  function descartarEdicao() {
+    if (!_editandoId) return;
+    Modal.confirmar(
+      "Descartar rascunho",
+      "Deseja descartar este rascunho? O pedido em edição será excluído.",
+      () => {
+        excluir(_editandoId);
+        App.novoPedido();
+      }
+    );
+  }
+
+  function limparEdicaoAtual() {
+    _editandoId = null;
+    State.rascunhoIdAtual = null;
+    _esconderIndicadores();
+  }
+
+  function getEditandoId() { return _editandoId; }
+
+  let _autosaveTimer = null;
+  function autosave() {
+    clearTimeout(_autosaveTimer);
+    _autosaveTimer = setTimeout(() => {
+      if (State.etapaAtual >= 6) return;
+      const d = State.dados;
+      const temConteudo = d.departamento || d.setor || d.responsavel || d.telefone || d.email || State.carrinho.length > 0;
+      if (!temConteudo) return;
+      if (_editandoId) {
+        const lista = listar();
+        const idx = lista.findIndex(r => r.id === _editandoId);
+        if (idx >= 0) {
+          Demanda.coletarDadosFormulario();
+          lista[idx].dados = { ...State.dados };
+          lista[idx].carrinho = State.carrinho.map(i => ({ ...i }));
+          lista[idx].etapaAtual = State.etapaAtual;
+          lista[idx].atualizadoEm = Util.agora();
+          _persistir(lista);
+        }
+      }
+    }, 3000);
+  }
+
+  return {
+    salvar, salvarManual, listar, carregar, excluir,
+    descartarEdicao, limparEdicaoAtual, getEditandoId, autosave
+  };
+})();
+
+/* ============================================================
+   MÓDULO MEUS PEDIDOS
+   ============================================================ */
+const MeusPedidos = (() => {
+  let _tabAtiva = "rascunhos";
+
+  function switchTab(tab) {
+    _tabAtiva = tab;
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
+    document.getElementById("tab-rascunhos").style.display = tab === "rascunhos" ? "block" : "none";
+    document.getElementById("tab-enviados").style.display = tab === "enviados" ? "block" : "none";
+    render();
+  }
+
+  async function render() {
+    const rascunhos = Rascunhos.listar();
+    document.getElementById("count-rascunhos").textContent = rascunhos.length;
+    const listaRasc = document.getElementById("lista-rascunhos");
+
+    if (!rascunhos.length) {
+      listaRasc.innerHTML = '<div class="empty"><svg class="ico-svg xxl"><use href="#i-edit"/></svg><div>Nenhum rascunho salvo.</div></div>';
+    } else {
+      listaRasc.innerHTML = rascunhos
+        .slice()
+        .sort((a, b) => new Date(b.atualizadoEm || 0) - new Date(a.atualizadoEm || 0))
+        .map(r => {
+          const d = r.dados || {};
+          const totalItens = (r.carrinho || []).length;
+          const totalUnid = (r.carrinho || []).reduce((s, i) => s + (Number(i.qtd) || 0), 0);
+          return `
+            <div class="pedido-card">
+              <div>
+                <div class="pc-top">
+                  <span class="pc-id">${Util.esc(r.id)}</span>
+                  <span class="etapa-badge rascunho"><svg class="ico-svg sm"><use href="#i-edit"/></svg> Rascunho</span>
+                  <span class="badge cinza">Etapa ${r.etapaAtual || 1}/6</span>
+                </div>
+                <div class="pc-titulo">${Util.esc(d.setor || "Setor não informado")}</div>
+                <div class="pc-meta">
+                  ${d.departamento ? Util.esc(d.departamento) + "<br>" : ""}
+                  ${d.semestre ? "Semestre: <b>" + Util.esc(d.semestre) + "</b> · " : ""}
+                  Itens: <b>${totalItens}</b> · Unidades: <b>${Util.fmtNum(totalUnid)}</b><br>
+                  Atualizado: ${Util.esc(r.atualizadoEm || r.criadoEm || "—")}
+                </div>
+              </div>
+              <div class="pc-actions">
+                <button class="btn btn-primary btn-sm" onclick="MeusPedidos.continuar('${Util.esc(r.id)}')">
+                  <svg class="ico-svg sm"><use href="#i-play"/></svg> Continuar
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="Rascunhos.excluir('${Util.esc(r.id)}')">
+                  <svg class="ico-svg sm"><use href="#i-trash"/></svg> Excluir
+                </button>
+              </div>
+            </div>`;
+        }).join("");
+    }
+
+    let enviados = [];
+    try { enviados = JSON.parse(localStorage.getItem("ct_demandas_local") || "[]"); }
+    catch(e) { enviados = []; }
+    document.getElementById("count-enviados").textContent = enviados.length;
+    const listaEnv = document.getElementById("lista-enviados");
+
+    if (!enviados.length) {
+      listaEnv.innerHTML = '<div class="empty"><svg class="ico-svg xxl"><use href="#i-check-circle"/></svg><div>Nenhuma demanda enviada ainda.</div></div>';
+    } else {
+      listaEnv.innerHTML = enviados
+        .slice()
+        .sort((a, b) => new Date(b.data_hora_envio || 0) - new Date(a.data_hora_envio || 0))
+        .map(d => {
+          const totalItens = (d.itens || []).length;
+          const totalUnid = (d.itens || []).reduce((s, i) => s + (Number(i.qtd) || 0), 0);
+          return `
+            <div class="pedido-card">
+              <div>
+                <div class="pc-top">
+                  <span class="pc-id">${Util.esc(d.id_demanda || "—")}</span>
+                  <span class="etapa-badge enviado"><svg class="ico-svg sm"><use href="#i-check-circle"/></svg> Enviado</span>
+                </div>
+                <div class="pc-titulo">${Util.esc(d.setor_demandante || "—")}</div>
+                <div class="pc-meta">
+                  ${d.departamento ? Util.esc(d.departamento) + "<br>" : ""}
+                  Semestre: <b>${Util.esc(d.semestre_demanda || "—")}</b> · 
+                  Itens: <b>${totalItens}</b> · Unidades: <b>${Util.fmtNum(totalUnid)}</b><br>
+                  Enviado: ${Util.esc(d.data_hora_envio || "—")}
+                </div>
+              </div>
+              <div class="pc-actions">
+                <button class="btn btn-outline btn-sm" onclick="MeusPedidos.visualizar('${Util.esc(d.id_demanda)}')">
+                  <svg class="ico-svg sm"><use href="#i-eye"/></svg> Visualizar
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="Download.baixarPDF()">
+                  <svg class="ico-svg sm"><use href="#i-download"/></svg> PDF
+                </button>
+              </div>
+            </div>`;
+        }).join("");
+    }
+  }
+
+  function continuar(id) { Rascunhos.carregar(id); }
+
+  function visualizar(id) {
+    try {
+      const enviados = JSON.parse(localStorage.getItem("ct_demandas_local") || "[]");
+      const d = enviados.find(x => x.id_demanda === id);
+      if (!d) { Util.toast("Demanda não encontrada.", "erro"); return; }
+      State.ultimaDemanda = d;
+      document.getElementById("sucesso-id").textContent = d.id_demanda;
+      document.getElementById("sucesso-detalhes").innerHTML = `
+        <div class="revisao-grid">
+          <div class="revisao-item"><div class="k">Semestre</div><div class="v">${Util.esc(d.semestre_demanda)}</div></div>
+          <div class="revisao-item"><div class="k">Departamento</div><div class="v">${Util.esc(d.departamento)}</div></div>
+          <div class="revisao-item"><div class="k">Setor</div><div class="v">${Util.esc(d.setor_demandante)}</div></div>
+          <div class="revisao-item"><div class="k">Itens</div><div class="v">${(d.itens || []).length} materiais</div></div>
+          <div class="revisao-item"><div class="k">Total demandado</div><div class="v">${Util.fmtNum(d.total_quantidade_demandada)} unidades</div></div>
+        </div>
+        <div class="alert alert-info" style="margin-top:16px">
+          <svg class="ico-svg md"><use href="#i-info"/></svg>
+          <div>Demanda registrada em ${Util.esc(d.data_hora_envio || "—")}.</div>
+        </div>`;
+      App.setEtapa(6);
+      App.go("demanda");
+    } catch(e) { Util.toast("Erro ao visualizar demanda.", "erro"); }
+  }
+
+  return { switchTab, render, continuar, visualizar };
+})();
+
+/* ============================================================
+   MÓDULO MODAL DE CONFIRMAÇÃO
+   ============================================================ */
+const Modal = (() => {
+  let _callback = null;
+
+  function confirmar(titulo, msg, cb) {
+    document.getElementById("modal-title").textContent = titulo;
+    document.getElementById("modal-msg").textContent = msg;
+    _callback = cb;
+    document.getElementById("modal-confirm").classList.add("show");
+    document.getElementById("modal-btn-confirmar").focus();
+  }
+
+  function fechar() {
+    document.getElementById("modal-confirm").classList.remove("show");
+    _callback = null;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("modal-btn-confirmar");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const cb = _callback;
+        fechar();
+        if (cb) cb();
+      });
+    }
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && document.getElementById("modal-confirm").classList.contains("show")) {
+      fechar();
+    }
+  });
+
+  return { confirmar, fechar };
+})();
+
+/* ============================================================
+   MÓDULO ORIENTAÇÃO DO SETOR
+   ============================================================ */
+const OrientacaoSetor = (() => {
+  const STORAGE_KEY = "ct_orientacao_setor_vista";
+
+  function deveExibir() {
+    try { return sessionStorage.getItem(STORAGE_KEY) !== "1"; }
+    catch(e) { return true; }
+  }
+
+  function marcarComoVista() {
+    try { sessionStorage.setItem(STORAGE_KEY, "1"); }
+    catch(e) {}
+  }
+
+  function exibir(callback) {
+    const overlay = document.getElementById("modal-orientacao-setor");
+    const btn = document.getElementById("btn-entendi-setor");
+
+    function fechar() {
+      overlay.classList.remove("show");
+      marcarComoVista();
+      btn.removeEventListener("click", fechar);
+      if (callback) callback();
+    }
+
+    btn.addEventListener("click", fechar, { once: true });
+    overlay.classList.add("show");
+  }
+
+  return { deveExibir, marcarComoVista, exibir };
+})();
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const State = {
+  dados: {
+    departamento: "", setor: "", semestre: "",
+    responsavel: "", chefia: "", telefone: "", email: "",
+    matricula: "", observacao: ""
+  },
+  carrinho: [],
+  etapaAtual: 1,
+  ultimaDemanda: null,
+  rascunhoIdAtual: null,
+
+  reset() {
+    this.dados = { departamento:"", setor:"", semestre:"", responsavel:"", chefia:"",
+                   telefone:"", email:"", matricula:"", observacao:"" };
+    this.carrinho = [];
+    this.etapaAtual = 1;
+    this.ultimaDemanda = null;
+    this.rascunhoIdAtual = null;
+  },
+  addItem(mat) {
+    if (this.carrinho.find(i => i.codigo === mat.codigo)) return { duplicado: true };
+    this.carrinho.push({ ...mat, qtd: mat.qtd });
+    return { duplicado: false };
+  },
+  removeItem(codigo) { this.carrinho = this.carrinho.filter(i => i.codigo !== codigo); },
+  updateQtd(codigo, qtd) {
+    const it = this.carrinho.find(i => i.codigo === codigo);
+    if (it) it.qtd = Math.max(1, Number(qtd) || 1);
+  },
+  totalItens() { return this.carrinho.length; },
+  totalUnidades() { return this.carrinho.reduce((s, i) => s + i.qtd, 0); }
+};
+
+/* ============================================================
+   UTIL
+   ============================================================ */
+const Util = (() => {
+  function toast(msg, tipo = "info") {
+    const el = document.getElementById("toast");
+    el.innerHTML = (tipo === "ok" ? '<svg class="ico-svg sm"><use href="#i-check-circle"/></svg>' :
+                    tipo === "erro" ? '<svg class="ico-svg sm"><use href="#i-alert"/></svg>' :
+                    '<svg class="ico-svg sm"><use href="#i-info"/></svg>') + '<span>' + msg + '</span>';
+    el.className = "toast show " + (tipo === "erro" ? "erro" : tipo === "ok" ? "ok" : "");
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.className = "toast", 3800);
+  }
+  function esc(s) {
+    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+  }
+  function fmtNum(n) {
+    const v = Number(n) || 0;
+    return v.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
+  }
+  function agora() {
+    const d = new Date();
+    return d.toLocaleString("pt-BR", { dateStyle:"short", timeStyle:"short" });
+  }
+  function gerarIdDemanda(semestre, seq) {
+    const ano = (semestre || "").split(".")[0] || new Date().getFullYear();
+    return `DEM-${ano}-${String(seq).padStart(5, "0")}`;
+  }
+  function validarEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(e||"").trim()); }
+  function mascaraTelefone(v) {
+    v = String(v||"").replace(/\D/g,"").slice(0,11);
+    if (v.length <= 10) return v.replace(/(\d{0,2})(\d{0,4})(\d{0,4}).*/, (_,a,b,c)=> a ? `(${a})${b?" "+b:""}${c?"-"+c:""}` : "");
+    return v.replace(/(\d{2})(\d{5})(\d{0,4}).*/, "($1) $2-$3");
+  }
+  function semestresDisponiveis() {
+    const anoAtual = new Date().getFullYear();
+    const out = [];
+    for (let a = anoAtual - 1; a <= anoAtual + 2; a++) {
+      out.push(`${a}.1`); out.push(`${a}.2`);
+    }
+    return out;
+  }
+  return { toast, esc, fmtNum, agora, gerarIdDemanda, validarEmail, mascaraTelefone, semestresDisponiveis };
+})();
+
+/* ============================================================
+   DEMANDA
+   ============================================================ */
+const Demanda = (() => {
+
+  let _orientacaoJaExibidaNoCampo = false;
+
+  async function init() {
+    const selDep = document.getElementById("sel-departamento");
+    API.getDepartamentos().forEach(d => {
+      const o = document.createElement("option");
+      o.value = d; o.textContent = d;
+      selDep.appendChild(o);
+    });
+
+    const selSem = document.getElementById("sel-semestre");
+    Util.semestresDisponiveis().forEach(s => {
+      const o = document.createElement("option");
+      o.value = s; o.textContent = s;
+      selSem.appendChild(o);
+    });
+    const hoje = new Date();
+    const semAtual = `${hoje.getFullYear()}.${hoje.getMonth() < 6 ? 1 : 2}`;
+    selSem.value = semAtual;
+    State.dados.semestre = semAtual;
+
+    const materiais = await API.carregarMateriais();
+    const grupos = [...new Map(materiais.map(m => [m.grupo, m])).values()]
+      .sort((a,b) => a.grupo.localeCompare(b.grupo));
+    const selGrupo = document.getElementById("sel-grupo");
+    grupos.forEach(g => {
+      const o = document.createElement("option");
+      o.value = g.grupo;
+      o.textContent = `${g.grupo} — ${g.descGrupo}`;
+      selGrupo.appendChild(o);
+    });
+
+    bindEventos();
+    console.info(`[Demanda] Materiais carregados via ${API.getFonte()}.`);
+    if (API.getFonte() === "fallback") {
+      Util.toast("API indisponível — usando base local de materiais.", "erro");
+    } else {
+      Util.toast("API conectada com sucesso!", "ok");
+    }
+  }
+
+  function bindEventos() {
+    document.getElementById("sel-departamento").addEventListener("change", e => {
+      State.dados.departamento = e.target.value;
+      Rascunhos.autosave();
+    });
+
+    const inpSetor = document.getElementById("inp-setor-manual");
+
+    inpSetor.addEventListener("focus", () => {
+      if (!_orientacaoJaExibidaNoCampo && OrientacaoSetor.deveExibir()) {
+        _orientacaoJaExibidaNoCampo = true;
+        inpSetor.blur();
+        setTimeout(() => {
+          OrientacaoSetor.exibir(() => {
+            inpSetor.focus();
+          });
+        }, 60);
+        return;
+      }
+    });
+
+    inpSetor.addEventListener("input", e => {
+      State.dados.setor = e.target.value;
+      Rascunhos.autosave();
+    });
+
+    document.getElementById("sel-semestre").addEventListener("change", e => {
+      State.dados.semestre = e.target.value;
+      Rascunhos.autosave();
+    });
+
+    document.getElementById("chk-mesma-pessoa").addEventListener("change", e => {
+      if (e.target.checked) {
+        document.getElementById("inp-chefia").value = document.getElementById("inp-responsavel").value;
+        State.dados.chefia = State.dados.responsavel;
+      }
+    });
+    document.getElementById("inp-responsavel").addEventListener("input", e => {
+      State.dados.responsavel = e.target.value;
+      if (document.getElementById("chk-mesma-pessoa").checked) {
+        document.getElementById("inp-chefia").value = e.target.value;
+        State.dados.chefia = e.target.value;
+      }
+      Rascunhos.autosave();
+    });
+    document.getElementById("inp-chefia").addEventListener("input", e => {
+      State.dados.chefia = e.target.value;
+      Rascunhos.autosave();
+    });
+
+    document.getElementById("inp-telefone").addEventListener("input", e => {
+      e.target.value = Util.mascaraTelefone(e.target.value);
+      State.dados.telefone = e.target.value;
+      Rascunhos.autosave();
+    });
+    document.getElementById("inp-email").addEventListener("input", e => {
+      State.dados.email = e.target.value;
+      Rascunhos.autosave();
+    });
+    document.getElementById("inp-matricula").addEventListener("input", e => {
+      State.dados.matricula = e.target.value;
+      Rascunhos.autosave();
+    });
+    document.getElementById("inp-observacao").addEventListener("input", e => {
+      State.dados.observacao = e.target.value;
+      Rascunhos.autosave();
+    });
+
+    document.getElementById("sel-grupo").addEventListener("change", async e => {
+      const g = e.target.value;
+      const cont = document.getElementById("lista-materiais");
+      if (!g) {
+        cont.innerHTML = '<div class="empty"><svg class="ico-svg xxl"><use href="#i-clipboard"/></svg><div>Selecione um grupo acima para visualizar os materiais.</div></div>';
+        return;
+      }
+      const materiais = await API.carregarMateriais();
+      const lista = materiais.filter(m => m.grupo === g);
+      cont.innerHTML = "";
+      if (!lista.length) {
+        cont.innerHTML = '<div class="empty">Nenhum material neste grupo.</div>';
+        return;
+      }
+      lista.forEach(m => {
+        const div = document.createElement("div");
+        div.className = "material-row";
+        div.innerHTML = `
+          <div class="material-info">
+            <div class="nome" title="${Util.esc(m.material)}">${Util.esc(m.material)}</div>
+            <div class="meta">Código: <b>${Util.esc(m.codigo)}</b> · Saldo atual: <b>${Util.fmtNum(m.saldo)}</b></div>
+          </div>
+          <div class="material-add">
+            <input type="number" min="1" value="1" class="qtd-input" data-cod="${Util.esc(m.codigo)}" />
+            <button class="btn btn-primary btn-sm" data-add="${Util.esc(m.codigo)}">
+              <svg class="ico-svg sm"><use href="#i-plus"/></svg> Adicionar
+            </button>
+          </div>`;
+        cont.appendChild(div);
+      });
+      cont.querySelectorAll("[data-add]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const cod = btn.getAttribute("data-add");
+          const mat = lista.find(x => x.codigo === cod);
+          const qtdInput = cont.querySelector(`.qtd-input[data-cod="${CSS.escape(cod)}"]`);
+          const qtd = Math.max(1, Number(qtdInput.value) || 1);
+          const r = State.addItem({ ...mat, qtd });
+          if (r.duplicado) { Util.toast("Este material já foi adicionado à sua demanda.", "erro"); return; }
+          Util.toast(`Adicionado: ${mat.material.slice(0,40)}...`, "ok");
+          renderCarrinho();
+          Rascunhos.autosave();
+        });
+      });
+    });
+  }
+
+  function renderCarrinho() {
+    const cont = document.getElementById("cart-items");
+    if (!State.carrinho.length) {
+      cont.innerHTML = '<div class="empty" style="padding:18px"><svg class="ico-svg xl"><use href="#i-clipboard"/></svg><div>Nenhum material adicionado ainda.</div></div>';
+    } else {
+      cont.innerHTML = "";
+      State.carrinho.forEach(it => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <div>
+            <div class="ci-nome">${Util.esc(it.material.length > 70 ? it.material.slice(0,70)+"..." : it.material)}</div>
+            <div class="ci-meta">Cód. ${Util.esc(it.codigo)} · ${Util.esc(it.descGrupo)}</div>
+          </div>
+          <input type="number" min="1" value="${it.qtd}" data-qtd="${Util.esc(it.codigo)}" />
+          <button class="btn-remove" data-rm="${Util.esc(it.codigo)}" title="Remover">
+            <svg class="ico-svg sm"><use href="#i-trash"/></svg>
+          </button>`;
+        cont.appendChild(div);
+      });
+      cont.querySelectorAll("[data-qtd]").forEach(inp => {
+        inp.addEventListener("change", e => {
+          State.updateQtd(inp.getAttribute("data-qtd"), e.target.value);
+          renderCarrinho();
+          Rascunhos.autosave();
+        });
+      });
+      cont.querySelectorAll("[data-rm]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          State.removeItem(btn.getAttribute("data-rm"));
+          renderCarrinho();
+          Rascunhos.autosave();
+        });
+      });
+    }
+    document.getElementById("cart-count").textContent = State.totalItens();
+    document.getElementById("cart-total").textContent = Util.fmtNum(State.totalUnidades());
+  }
+
+  function coletarDadosFormulario() {
+    State.dados.departamento = document.getElementById("sel-departamento").value;
+    State.dados.setor = document.getElementById("inp-setor-manual").value.trim();
+    State.dados.semestre = document.getElementById("sel-semestre").value;
+    State.dados.responsavel = document.getElementById("inp-responsavel").value.trim();
+    State.dados.chefia = document.getElementById("inp-chefia").value.trim();
+    State.dados.telefone = document.getElementById("inp-telefone").value.trim();
+    State.dados.email = document.getElementById("inp-email").value.trim();
+    State.dados.matricula = document.getElementById("inp-matricula").value.trim();
+    State.dados.observacao = document.getElementById("inp-observacao").value.trim();
+  }
+
+  function validarEtapa(n) {
+    coletarDadosFormulario();
+    const erros = [];
+    const d = State.dados;
+    if (n >= 1) {
+      if (!d.departamento) erros.push("Departamento é obrigatório.");
+      if (!d.setor) erros.push("Setor demandante é obrigatório (informe por extenso).");
+      if (!d.semestre) erros.push("Semestre da demanda é obrigatório.");
+    }
+    if (n >= 2) {
+      if (!d.responsavel) erros.push("Responsável administrativo/técnico é obrigatório.");
+      if (!d.chefia) erros.push("Chefia do setor é obrigatória.");
+    }
+    if (n >= 3) {
+      if (!d.telefone) erros.push("WhatsApp/Telefone é obrigatório.");
+      if (!d.email || !Util.validarEmail(d.email)) erros.push("E-mail válido é obrigatório.");
+      if (!d.matricula) erros.push("Matrícula do responsável é obrigatória.");
+    }
+    if (n >= 4) {
+      if (!State.carrinho.length) erros.push("Adicione pelo menos um material à demanda.");
+      State.carrinho.forEach(i => { if (i.qtd <= 0) erros.push(`Quantidade inválida para ${i.material.slice(0,30)}...`); });
+    }
+    return erros;
+  }
+
+  function renderRevisao() {
+    coletarDadosFormulario();
+    const d = State.dados;
+    document.getElementById("rev-dados").innerHTML = [
+      ["Departamento", d.departamento],
+      ["Setor", d.setor],
+      ["Semestre", d.semestre],
+      ["Responsável", d.responsavel],
+      ["Chefia", d.chefia],
+      ["Telefone", d.telefone],
+      ["E-mail", d.email],
+      ["Matrícula", d.matricula],
+      ["Observação", d.observacao || "—"]
+    ].map(([k,v]) => `<div class="revisao-item"><div class="k">${Util.esc(k)}</div><div class="v">${Util.esc(v)||"—"}</div></div>`).join("");
+
+    const tbody = document.querySelector("#rev-tabela tbody");
+    tbody.innerHTML = State.carrinho.map(i => `
+      <tr>
+        <td>${Util.esc(i.descGrupo)}</td>
+        <td>${Util.esc(i.material)}</td>
+        <td class="mono">${Util.esc(i.codigo)}</td>
+        <td class="num">${Util.fmtNum(i.saldo)}</td>
+        <td class="num"><b>${Util.fmtNum(i.qtd)}</b></td>
+      </tr>`).join("");
+  }
+
+  return { init, renderCarrinho, coletarDadosFormulario, validarEtapa, renderRevisao };
+})();
+
+/* ============================================================
+   ADMIN
+   ============================================================ */
+const Admin = (() => {
+  let _todasDemandas = null;
+
+  async function carregarDemandas() {
+    _todasDemandas = await API.buscarDemandas();
+  }
+
+  async function render() {
+    await carregarDemandas();
+    const semFiltro = document.getElementById("adm-semestre").value;
+    const depFiltro = document.getElementById("adm-departamento").value;
+    const grupoFiltro = document.getElementById("adm-grupo").value;
+    const busca = document.getElementById("adm-busca").value.trim().toLowerCase();
+
+    const demandas = (_todasDemandas || []).map(normalizarDemanda).filter(d => d.itens && d.itens.length);
+
+    const filtradas = demandas.filter(d => {
+      if (semFiltro && d.semestre !== semFiltro) return false;
+      if (depFiltro && d.departamento !== depFiltro) return false;
+      if (grupoFiltro && !d.itens.some(i => i.grupo === grupoFiltro)) return false;
+      if (busca) {
+        const ok = d.itens.some(i =>
+          (i.codigo||"").toLowerCase().includes(busca) ||
+          (i.material||"").toLowerCase().includes(busca));
+        if (!ok) return false;
+      }
+      return true;
+    });
+
+    renderKpis(filtradas);
+    renderConsolidadoMaterial(filtradas, grupoFiltro, busca);
+    renderConsolidadoSetor(filtradas);
+    renderConsolidadoDepartamento(filtradas);
+    renderConsolidadoGrupo(filtradas);
+    renderDemandas(filtradas);
+  }
+
+  function normalizarDemanda(d) {
+    if (d.itens) return d;
+    const itens = (d.itens_demanda || d.itensDemanda || []).map(i => ({
+      grupo: String(i.grupo || i.GRUPO || "").trim(),
+      descGrupo: String(i.descGrupo || i["DESCRIÇÃO DO GRUPO"] || i.descricao_grupo || "").trim(),
+      codigo: String(i.codigo || i["CÓDIGO_MATERIAL"] || i.codigo_material || "").trim(),
+      material: String(i.material || i["MATERIAL"] || "").trim(),
+      qtd: Number(i.qtd || i["QUANTIDADE_DEMANDADA_SEMESTRAL"] || 0),
+      saldoBase: Number(i.saldoBase || i["SALDO_ESTOQUE_BASE"] || 0)
+    }));
+    return {
+      id: d.id || d["ID_DEMANDA"] || "",
+      dataHora: d.dataHora || d["DATA_HORA_ENVIO"] || "",
+      semestre: d.semestre || d["SEMESTRE_DEMANDA"] || "",
+      departamento: d.departamento || d["DEPARTAMENTO"] || "",
+      setor: d.setor || d["SETOR_DEMANDANTE"] || "",
+      responsavel: d.responsavel || d["RESPONSÁVEL_ADMINISTRATIVO_OU_TÉCNICO"] || "",
+      chefia: d.chefia || d["CHEFIA_DO_SETOR"] || "",
+      telefone: d.telefone || d["WHATSAPP_TELEFONE"] || "",
+      email: d.email || d["EMAIL_SETOR_OU_RESPONSÁVEL"] || "",
+      matricula: d.matricula || d["MATRÍCULA_RESPONSÁVEL"] || "",
+      observacao: d.observacao || d["OBSERVAÇÃO"] || "",
+      status: d.status || d["STATUS"] || "RECEBIDA",
+      itens
+    };
+  }
+
+  function renderKpis(demandas) {
+    const todosItens = demandas.flatMap(d => d.itens);
+    const totalDemandas = demandas.length;
+    const setores = new Set(demandas.map(d => d.setor));
+    const deps = new Set(demandas.map(d => d.departamento));
+    const materiaisDistintos = new Set(todosItens.map(i => i.codigo));
+    const totalQtd = todosItens.reduce((s,i) => s + i.qtd, 0);
+
+    document.getElementById("adm-kpis").innerHTML = [
+      ["Pedidos recebidos", totalDemandas, ""],
+      ["Setores participantes", setores.size, ""],
+      ["Departamentos participantes", deps.size, "de 8"],
+      ["Materiais distintos", materiaisDistintos.size, ""],
+      ["Quantidade total demandada", Util.fmtNum(totalQtd), "unidades"],
+      ["Linhas de itens", todosItens.length, ""]
+    ].map(([l,v,s]) => `
+      <div class="kpi">
+        <div class="kpi-label">${Util.esc(l)}</div>
+        <div class="kpi-value">${v}</div>
+        ${s ? `<div class="kpi-sub">${Util.esc(s)}</div>` : ""}
+      </div>`).join("");
+  }
+
+  function renderConsolidadoMaterial(demandas, grupoFiltro, busca) {
+    const map = new Map();
+    demandas.flatMap(d => d.itens).forEach(i => {
+      if (grupoFiltro && i.grupo !== grupoFiltro) return;
+      if (busca && !(i.codigo||"").toLowerCase().includes(busca) && !(i.material||"").toLowerCase().includes(busca)) return;
+      if (!map.has(i.codigo)) map.set(i.codigo, { ...i, demanda: 0 });
+      map.get(i.codigo).demanda += i.qtd;
+    });
+    const linhas = [...map.values()].sort((a,b) => b.demanda - a.demanda);
+    const tbody = document.querySelector("#adm-tabela-material tbody");
+    if (!linhas.length) {
+      tbody.innerHTML = '<tr><td colspan="6" class="empty">Nenhum material demandado com os filtros atuais.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = linhas.map(i => {
+      const saldoApos = i.saldoBase - i.demanda;
+      const classeSaldo = saldoApos < 0 ? "vermelho" : "verde";
+      return `<tr>
+        <td class="mono">${Util.esc(i.codigo)}</td>
+        <td>${Util.esc(i.material)}</td>
+        <td>${Util.esc(i.descGrupo)}</td>
+        <td class="num">${Util.fmtNum(i.saldoBase)}</td>
+        <td class="num"><b>${Util.fmtNum(i.demanda)}</b></td>
+        <td class="num"><span class="badge ${classeSaldo}">${Util.fmtNum(saldoApos)}</span></td>
+      </tr>`;
+    }).join("");
+  }
+
+  function renderConsolidadoSetor(demandas) {
+    const map = new Map();
+    demandas.forEach(d => {
+      const k = d.departamento + "||" + d.setor;
+      if (!map.has(k)) map.set(k, { departamento:d.departamento, setor:d.setor, linhas:0, total:0 });
+      const o = map.get(k);
+      o.linhas += d.itens.length;
+      o.total += d.itens.reduce((s,i)=>s+i.qtd, 0);
+    });
+    const linhas = [...map.values()].sort((a,b)=>b.total-a.total);
+    const tbody = document.querySelector("#adm-tabela-setor tbody");
+    tbody.innerHTML = linhas.length
+      ? linhas.map(r => `<tr>
+          <td>${Util.esc(r.departamento)}</td>
+          <td>${Util.esc(r.setor)}</td>
+          <td class="num">${r.linhas}</td>
+          <td class="num"><b>${Util.fmtNum(r.total)}</b></td>
+        </tr>`).join("")
+      : '<tr><td colspan="4" class="empty">Sem dados.</td></tr>';
+  }
+
+  function renderConsolidadoDepartamento(demandas) {
+    const deps = API.getDepartamentos();
+    const map = new Map(deps.map(d => [d, { linhas:0, total:0 }]));
+    demandas.forEach(d => {
+      if (!map.has(d.departamento)) map.set(d.departamento, { linhas:0, total:0 });
+      const o = map.get(d.departamento);
+      o.linhas += d.itens.length;
+      o.total += d.itens.reduce((s,i)=>s+i.qtd, 0);
+    });
+    const tbody = document.querySelector("#adm-tabela-departamento tbody");
+    tbody.innerHTML = [...map.entries()].map(([dep, o]) => `<tr>
+      <td>${Util.esc(dep)}</td>
+      <td class="num">${o.linhas}</td>
+      <td class="num"><b>${Util.fmtNum(o.total)}</b></td>
+    </tr>`).join("") + `<tr style="background:var(--azul-claro);font-weight:700">
+      <td>TOTAL CT</td>
+      <td class="num">${[...map.values()].reduce((s,o)=>s+o.linhas,0)}</td>
+      <td class="num">${Util.fmtNum([...map.values()].reduce((s,o)=>s+o.total,0))}</td>
+    </tr>`;
+  }
+
+  function renderConsolidadoGrupo(demandas) {
+    const map = new Map();
+    demandas.flatMap(d => d.itens).forEach(i => {
+      if (!map.has(i.grupo)) map.set(i.grupo, { grupo:i.grupo, desc:i.descGrupo, materiais:new Set(), total:0 });
+      const o = map.get(i.grupo);
+      o.materiais.add(i.codigo);
+      o.total += i.qtd;
+    });
+    const linhas = [...map.values()].sort((a,b)=>b.total-a.total);
+    const tbody = document.querySelector("#adm-tabela-grupo tbody");
+    tbody.innerHTML = linhas.length
+      ? linhas.map(r => `<tr>
+          <td class="mono">${Util.esc(r.grupo)}</td>
+          <td>${Util.esc(r.desc)}</td>
+          <td class="num">${r.materiais.size}</td>
+          <td class="num"><b>${Util.fmtNum(r.total)}</b></td>
+        </tr>`).join("")
+      : '<tr><td colspan="4" class="empty">Sem dados.</td></tr>';
+  }
+
+  function renderDemandas(demandas) {
+    const tbody = document.querySelector("#adm-tabela-demandas tbody");
+    tbody.innerHTML = demandas.length
+      ? demandas.map(d => {
+          const total = d.itens.reduce((s,i)=>s+i.qtd,0);
+          return `<tr>
+            <td class="mono"><b>${Util.esc(d.id)}</b></td>
+            <td>${Util.esc(d.dataHora)}</td>
+            <td>${Util.esc(d.semestre)}</td>
+            <td>${Util.esc(d.departamento)}</td>
+            <td>${Util.esc(d.setor)}</td>
+            <td class="num">${d.itens.length}</td>
+            <td class="num"><b>${Util.fmtNum(total)}</b></td>
+            <td><span class="badge">${Util.esc(d.status)}</span></td>
+          </tr>`;
+        }).join("")
+      : '<tr><td colspan="8" class="empty">Nenhuma demanda registrada com os filtros atuais.</td></tr>';
+  }
+
+  function exportarCSV() {
+    const tabela = document.querySelector("#adm-tabela-material");
+    const linhas = [];
+    tabela.querySelectorAll("tr").forEach(tr => {
+      const cols = [...tr.querySelectorAll("th,td")].map(c => `"${c.textContent.trim().replace(/"/g,'""')}"`);
+      linhas.push(cols.join(","));
+    });
+    const blob = new Blob(["\uFEFF" + linhas.join("\n")], { type:"text/csv;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `demanda_consolidada_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    Util.toast("CSV exportado.", "ok");
+  }
+
+  async function diagnosticarAPI() {
+    const el = document.getElementById("adm-diag");
+    el.innerHTML = "⏳ Testando conexão com a API...";
+    try {
+      const url = API.ENDPOINT + (API.ENDPOINT.includes("?") ? "&" : "?") + "action=materiais";
+      const r = await fetch(url, { redirect:"follow" });
+      const text = await r.text();
+      let json; try { json = JSON.parse(text); } catch(e) {}
+      const qtd = json ? (Array.isArray(json) ? json.length : (json.materiais?.length || json.data?.length || 0)) : 0;
+      el.innerHTML = `✅ API respondeu. HTTP ${r.status}. Materiais retornados: ${qtd}.<br><small>Endpoint: ${API.ENDPOINT}</small>`;
+    } catch(e) {
+      el.innerHTML = `❌ Falha na API: ${Util.esc(e.message)}.<br>Usando fallback local com ${window.__MATERIAIS_FALLBACK__.length} materiais.`;
+    }
+  }
+
+  function populateFiltros() {
+    const selSem = document.getElementById("adm-semestre");
+    const selDep = document.getElementById("adm-departamento");
+    const selGrp = document.getElementById("adm-grupo");
+
+    if (!selSem.options.length || selSem.options.length <= 1) {
+      Util.semestresDisponiveis().forEach(s => {
+        const o = document.createElement("option"); o.value=s; o.textContent=s; selSem.appendChild(o);
+      });
+      API.getDepartamentos().forEach(d => {
+        const o = document.createElement("option"); o.value=d; o.textContent=d; selDep.appendChild(o);
+      });
+      API.carregarMateriais().then(mats => {
+        const grupos = [...new Map(mats.map(m=>[m.grupo,m])).values()].sort((a,b)=>a.grupo.localeCompare(b.grupo));
+        grupos.forEach(g => {
+          const o = document.createElement("option"); o.value=g.grupo;
+          o.textContent = `${g.grupo} — ${g.descGrupo}`; selGrp.appendChild(o);
+        });
+      });
+    }
+  }
+
+  return { render, exportarCSV, populateFiltros, diagnosticarAPI };
+})();
+
+/* ============================================================
+   APP
+   ============================================================ */
+const App = (() => {
+
+  const LOGIN_PADRAO = { user: "servidor ct", pass: "456789" };
+
+  function autenticar() {
+    const user = document.getElementById("login-user").value.trim().toLowerCase();
+    const pass = document.getElementById("login-pass").value;
+    const erro = document.getElementById("login-erro");
+    if (user === LOGIN_PADRAO.user && pass === LOGIN_PADRAO.pass) {
+      erro.style.display = "none";
+      sessionStorage.setItem("ct_logado", "1");
+      mostrarApp();
+      return true;
+    }
+    erro.style.display = "block";
+    return false;
+  }
+
+  function mostrarApp() {
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("app-header").style.display = "";
+    document.getElementById("app-main").style.display = "";
+    App.init();
+  }
+
+  function logout() {
+    const d = State.dados;
+    const temConteudo = d.departamento || d.setor || d.responsavel || d.telefone || d.email || State.carrinho.length > 0;
+    if (temConteudo && State.etapaAtual < 6) {
+      Modal.confirmar(
+        "Informações não salvas",
+        "Você possui informações não salvas. Deseja gravar este pedido antes de sair?",
+        () => {
+          Rascunhos.salvar();
+          _executarLogout();
+        }
+      );
+      const btnCancelar = document.getElementById("modal-btn-cancelar");
+      btnCancelar.textContent = "Sair sem salvar";
+      btnCancelar.onclick = () => {
+        Modal.fechar();
+        _executarLogout();
+      };
+      return;
+    }
+    _executarLogout();
+  }
+
+  function _executarLogout() {
+    const btnCancelar = document.getElementById("modal-btn-cancelar");
+    btnCancelar.textContent = "Cancelar";
+    btnCancelar.onclick = () => Modal.fechar();
+
+    sessionStorage.removeItem("ct_logado");
+    sessionStorage.removeItem("ct_orientacao_setor_vista");
+    Rascunhos.limparEdicaoAtual();
+    State.reset();
+    document.getElementById("login-screen").style.display = "grid";
+    document.getElementById("app-header").style.display = "none";
+    document.getElementById("app-main").style.display = "none";
+    document.getElementById("login-user").value = "";
+    document.getElementById("login-pass").value = "";
+    document.getElementById("login-erro").style.display = "none";
+  }
+
+  function go(view) {
+    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    document.getElementById("view-" + view).classList.add("active");
+    document.querySelectorAll(".topbar nav button").forEach(b => b.classList.remove("active"));
+    const navBtn = document.getElementById("nav-" + view);
+    if (navBtn) navBtn.classList.add("active");
+    if (view === "admin") {
+      Admin.populateFiltros();
+      Admin.render();
+    }
+    if (view === "meuspedidos") {
+      MeusPedidos.render();
+    }
+    window.scrollTo({ top:0, behavior:"smooth" });
+  }
+
+  function setEtapa(n) {
+    State.etapaAtual = n;
+    document.querySelectorAll(".etapa").forEach(e => e.style.display = "none");
+    const alvo = document.getElementById("etapa-" + n);
+    if (alvo) alvo.style.display = "block";
+    document.querySelectorAll(".step").forEach(s => {
+      const sn = Number(s.dataset.step);
+      s.classList.toggle("active", sn === n);
+      s.classList.toggle("done", sn < n);
+    });
+    const steps = document.querySelectorAll(".step");
+    if (steps[n-1]) steps[n-1].scrollIntoView({ behavior:"smooth", block:"nearest" });
+    window.scrollTo({ top:0, behavior:"smooth" });
+  }
+
+  function avancar(proxima) {
+    if (State.etapaAtual === 2) Demanda.coletarDadosFormulario();
+    if (State.etapaAtual === 3) Demanda.coletarDadosFormulario();
+    const erros = Demanda.validarEtapa(proxima - 1);
+    if (erros.length) { Util.toast(erros[0], "erro"); return; }
+    if (proxima === 5) Demanda.renderRevisao();
+    setEtapa(proxima);
+    Rascunhos.autosave();
+  }
+
+  function voltar(anterior) {
+    setEtapa(anterior);
+    Rascunhos.autosave();
+  }
+
+  async function enviar() {
+    Demanda.coletarDadosFormulario();
+    const erros = Demanda.validarEtapa(5);
+    if (erros.length) { Util.toast(erros[0], "erro"); return; }
+
+    const d = State.dados;
+    let seq = 1;
+    try {
+      const store = JSON.parse(localStorage.getItem("ct_demandas_local") || "[]");
+      seq = store.length + 1;
+    } catch(e) { seq = 1; }
+    const id = Util.gerarIdDemanda(d.semestre, seq);
+
+    const payload = {
+      id_demanda: id,
+      data_hora_envio: Util.agora(),
+      semestre_demanda: d.semestre,
+      departamento: d.departamento,
+      setor_demandante: d.setor,
+      responsavel_administrativo_ou_tecnico: d.responsavel,
+      chefia_do_setor: d.chefia,
+      whatsapp_telefone: d.telefone,
+      email_setor_ou_responsavel: d.email,
+      matricula_responsavel: d.matricula,
+      observacao: d.observacao,
+      status: "RECEBIDA",
+      total_linhas_itens: State.carrinho.length,
+      total_quantidade_demandada: State.totalUnidades(),
+      itens: State.carrinho.map(i => ({
+        grupo: i.grupo,
+        descGrupo: i.descGrupo,
+        codigo: i.codigo,
+        material: i.material,
+        qtd: i.qtd,
+        saldoBase: i.saldo,
+        saldoApos: i.saldo - i.qtd
+      }))
+    };
+
+    const btn = document.querySelector("#etapa-5 .btn-success");
+    if (btn) { btn.disabled = true; btn.innerHTML = '<svg class="ico-svg sm"><use href="#i-send"/></svg> Enviando...'; }
+    const r = await API.enviarDemanda(payload);
+    if (btn) { btn.disabled = false; btn.innerHTML = '<svg class="ico-svg sm"><use href="#i-send"/></svg> Confirmar e Enviar'; }
+
+    if (State.rascunhoIdAtual) {
+      try {
+        const lista = Rascunhos.listar().filter(x => x.id !== State.rascunhoIdAtual);
+        localStorage.setItem("ct_rascunhos_local", JSON.stringify(lista));
+        Rascunhos.limparEdicaoAtual();
+      } catch(e) {}
+    }
+
+    State.ultimaDemanda = payload;
+    document.getElementById("sucesso-id").textContent = id;
+    document.getElementById("sucesso-detalhes").innerHTML = `
+      <div class="revisao-grid">
+        <div class="revisao-item"><div class="k">Semestre</div><div class="v">${Util.esc(d.semestre)}</div></div>
+        <div class="revisao-item"><div class="k">Departamento</div><div class="v">${Util.esc(d.departamento)}</div></div>
+        <div class="revisao-item"><div class="k">Setor</div><div class="v">${Util.esc(d.setor)}</div></div>
+        <div class="revisao-item"><div class="k">Itens</div><div class="v">${State.totalItens()} materiais</div></div>
+        <div class="revisao-item"><div class="k">Total demandado</div><div class="v">${Util.fmtNum(State.totalUnidades())} unidades</div></div>
+      </div>
+      <div class="alert alert-info" style="margin-top:16px">
+        <svg class="ico-svg md"><use href="#i-info"/></svg>
+        <div>${r.fonte === "local"
+          ? "A API não respondeu. A demanda foi registrada <b>localmente no navegador</b> e será reenviada automaticamente quando a conexão for restabelecida."
+          : "Demanda registrada no banco de dados do Centro de Tecnologia."}</div>
+      </div>`;
+    setEtapa(6);
+    Util.toast("Demanda registrada com sucesso!", "ok");
+    MeusPedidos.render();
+  }
+
+  function novoPedido() {
+    State.reset();
+    Rascunhos.limparEdicaoAtual();
+    document.querySelectorAll("input,select,textarea").forEach(el => {
+      if (el.type === "checkbox") el.checked = false;
+      else if (el.id && el.id.startsWith("adm-")) return;
+      else if (el.id && el.id.startsWith("login-")) return;
+      else el.value = "";
+    });
+    document.getElementById("lista-materiais").innerHTML = '<div class="empty"><svg class="ico-svg xxl"><use href="#i-clipboard"/></svg><div>Selecione um grupo acima para visualizar os materiais.</div></div>';
+    Demanda.renderCarrinho();
+    const hoje = new Date();
+    const semAtual = `${hoje.getFullYear()}.${hoje.getMonth() < 6 ? 1 : 2}`;
+    document.getElementById("sel-semestre").value = semAtual;
+    State.dados.semestre = semAtual;
+    setEtapa(1);
+    go("demanda");
+  }
+
+  function imprimirComprovante() {
+    Download.baixarPDF();
+  }
+
+  async function init() {
+    await Demanda.init();
+    Demanda.renderCarrinho();
+    ["adm-semestre","adm-departamento","adm-grupo"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", Admin.render);
+    });
+    const admBusca = document.getElementById("adm-busca");
+    if (admBusca) admBusca.addEventListener("input", debounce(Admin.render, 250));
+    console.info("[App] Aplicativo inicializado com melhorias visuais e funcionais.");
+  }
+
+  function debounce(fn, ms) {
+    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Enter" && document.getElementById("login-screen").style.display !== "none") {
+      autenticar();
+    }
+  });
+  document.getElementById("btn-login").addEventListener("click", autenticar);
+
+  return { init, go, avancar, voltar, enviar, novoPedido, imprimirComprovante, logout, autenticar, mostrarApp, setEtapa };
+})();
+
+/* ============================================================
+   BOOTSTRAP
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem("ct_logado") === "1") {
+    App.mostrarApp();
+  }
+});
+</script>
+</body>
+</html>
